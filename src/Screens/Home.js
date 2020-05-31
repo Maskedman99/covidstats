@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, View, Text, StyleSheet} from 'react-native';
+import {ScrollView, View, StyleSheet} from 'react-native';
 import axios from 'axios';
 
 import Spinner from '../Components/Spinner';
+import Global from '../Components/Global';
 import CountriesCard from '../Components/CountriesCard';
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
   ) : (
     <ScrollView style={styles.container}>
       <View style={styles.innerContainer}>
+        <Global data={data} />
         <CountriesCard topCountries={data.slice(0, 10)} />
       </View>
     </ScrollView>
