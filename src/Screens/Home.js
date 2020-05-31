@@ -1,10 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import axios from 'axios';
+
+import Spinner from '../Components/Spinner';
 
 const Home = () => {
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const getAxios = async url => {
+      const response = await axios.get(url);
+      setData(response.data);
+      setIsLoading(false);
+    };
+
+    getAxios('https://corona-api.com/countries');
+  }, []);
+
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <View style={styles.container}>
-      <Text style={styles.textClor}>Covid Tracker</Text>
+      <Text style={styles.textClor}>{data.data[0].name}</Text>
     </View>
   );
 };
