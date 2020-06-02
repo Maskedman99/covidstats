@@ -5,6 +5,7 @@ import axios from 'axios';
 import {ThemeContext} from '../Context/themes';
 
 import Spinner from '../Components/Spinner';
+import HomeHeader from '../Components/HomeHeader';
 import Global from '../Components/Global';
 import CountriesCard from '../Components/CountriesCard';
 
@@ -27,6 +28,7 @@ const Home = () => {
     <Spinner />
   ) : (
     <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
+      <HomeHeader />
       <Global data={data} />
       <CountriesCard topCountries={data.slice(0, 10)} />
     </ScrollView>
