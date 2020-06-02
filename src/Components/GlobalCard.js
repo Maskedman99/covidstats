@@ -14,7 +14,9 @@ const GlobalCard = ({title, data}) => {
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 16
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingBottom: 4
   },
   data: {
     textAlign: 'center'
