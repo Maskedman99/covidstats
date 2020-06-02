@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {ScrollView, View, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import axios from 'axios';
 
 import {ThemeContext} from '../Context/themes';
@@ -27,10 +27,8 @@ const Home = () => {
     <Spinner />
   ) : (
     <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
-      <View style={styles.innerContainer}>
-        <Global data={data} />
-        <CountriesCard topCountries={data.slice(0, 10)} />
-      </View>
+      <Global data={data} />
+      <CountriesCard topCountries={data.slice(0, 10)} />
     </ScrollView>
   );
 };
@@ -38,13 +36,6 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  innerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  textClor: {
-    color: 'white'
   }
 });
 

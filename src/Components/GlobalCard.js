@@ -6,14 +6,17 @@ import {ThemedText, Card} from './Common';
 const GlobalCard = ({title, data}) => {
   return (
     <Card>
-      <ThemedText>{title}</ThemedText>
-      <ThemedText style={styles.dataText}>{data}</ThemedText>
+      <ThemedText style={styles.header}>{title}</ThemedText>
+      <ThemedText style={styles.data}>{data}</ThemedText>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
-  dataText: {
+  header: {
+    fontSize: 16
+  },
+  data: {
     textAlign: 'center'
   }
 });
