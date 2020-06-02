@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     paddingBottom: 4
   },
   data: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 15
   }
 });
 

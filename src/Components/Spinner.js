@@ -7,7 +7,7 @@ const Spinner = () => {
   const theme = useContext(ThemeContext);
   return (
     <View style={[styles.container, {backgroundColor: theme.background}]}>
-      <ActivityIndicator color="white" size="large" />
+      <ActivityIndicator color={theme.foreground} size="large" />
     </View>
   );
 };
