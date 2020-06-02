@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {ActivityIndicator, View, StyleSheet} from 'react-native';
 
+import {ThemeContext} from '../Context/themes';
+
 const Spinner = () => {
+  const theme = useContext(ThemeContext);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <ActivityIndicator color="white" size="large" />
     </View>
   );
@@ -12,8 +15,7 @@ const Spinner = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#000000'
+    justifyContent: 'center'
   }
 });
 

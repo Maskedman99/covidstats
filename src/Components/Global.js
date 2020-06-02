@@ -6,7 +6,12 @@ import GlobalCard from './GlobalCard';
 import {formatNumber} from '../Logic/misc';
 
 const Global = ({data}) => {
-  const [globalData, setGlobalData] = useState({});
+  const [globalData, setGlobalData] = useState({
+    confirmed: 0,
+    recovered: 0,
+    deaths: 0,
+    active: 0
+  });
 
   useEffect(() => {
     let confirmed = 0;

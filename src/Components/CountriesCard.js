@@ -1,27 +1,66 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
-import CountriesTable from './CountriesTable';
+import {Card, ThemedText} from './Common';
+import {formatNumber} from '../Logic/misc';
 
 const CountriesCard = ({topCountries}) => {
   return (
-    <View style={styles.cardContainer}>
-      <CountriesTable data={topCountries} />
-    </View>
+    <Card style={styles.cardContainer}>
+      <View style={styles.container}>
+        <View>
+          <ThemedText style={styles.header}>Country</ThemedText>
+          {topCountries.map((item, id) => {
+            return <ThemedText style={styles.data}>{item.name}</ThemedText>;
+          })}
+        </View>
+        <View>
+          <ThemedText style={styles.header}>Confirmed</ThemedText>
+          {topCountries.map((item, id) => {
+            return (
+              <ThemedText style={styles.data}>
+                {formatNumber(item.latest_data.confirmed)}
+              </ThemedText>
+            );
+          })}
+        </View>
+        <View>
+          <ThemedText style={styles.header}>Recovered</ThemedText>
+          {topCountries.map((item, id) => {
+            return (
+              <ThemedText style={styles.data}>
+                {formatNumber(item.latest_data.recovered)}
+              </ThemedText>
+            );
+          })}
+        </View>
+        <View>
+          <ThemedText style={styles.header}>Deaths</ThemedText>
+          {topCountries.map((item, id) => {
+            return (
+              <ThemedText style={styles.data}>{formatNumber(item.latest_data.deaths)}</ThemedText>
+            );
+          })}
+        </View>
+      </View>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   cardContainer: {
-    width: '95%',
-    height: '50%',
-    flexGrow: 1,
-    marginVertical: 10,
-    padding: 10,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: 'white',
-    backgroundColor: 'grey'
+    width: '95%'
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  data: {
+    fontSize: 16
+  },
+  header: {
+    fontSize: 17,
+    paddingVertical: 5
   }
 });
 
