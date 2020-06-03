@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, RefreshControl} from 'react-native';
 import axios from 'axios';
 
 import {ThemeContext} from '../Context/themes';
@@ -11,9 +11,19 @@ import CountriesCard from '../Components/CountriesCard';
 
 const Home = () => {
   const theme = useContext(ThemeContext);
+
   const [isLoading, setIsLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
   const [globalData, setGlobalData] = useState([]);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    const response = await axios.get('https://api.covid19api.com/summary');
+    setGlobalData(response.data.Global);
+    setData(response.data.Countries.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed));
+    setRefreshing(false);
+  };
 
   useEffect(() => {
     const getAxios = async url => {
@@ -29,7 +39,16 @@ const Home = () => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
+    <ScrollView
+      style={[styles.container, {backgroundColor: theme.background}]}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={[theme.foreground]}
+          progressBackgroundColor={theme.card}
+        />
+      }>
       <HomeHeader />
       <Global data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />
