@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 
@@ -6,48 +6,26 @@ import GlobalCard from './GlobalCard';
 import {formatNumber} from '../Logic/misc';
 
 const Global = ({data}) => {
-  const [globalData, setGlobalData] = useState({
-    confirmed: 0,
-    recovered: 0,
-    deaths: 0,
-    active: 0
-  });
-
-  useEffect(() => {
-    let confirmed = 0;
-    let recovered = 0;
-    let deaths = 0;
-    data.map(item => (confirmed = item.latest_data.confirmed + confirmed));
-    data.map(item => (recovered = item.latest_data.recovered + recovered));
-    data.map(item => (deaths = item.latest_data.deaths + deaths));
-    let active = confirmed - recovered - deaths;
-
-    setGlobalData({
-      confirmed: confirmed,
-      recovered: recovered,
-      deaths: deaths,
-      active: active
-    });
-  }, [data]);
+  const active = data.TotalConfirmed - data.TotalRecovered - data.TotalDeaths;
 
   const pieData = [
     {
       name: 'Active',
-      value: globalData.active,
+      value: active,
       color: 'orange',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15
     },
     {
       name: 'Recovered',
-      value: globalData.recovered,
+      value: data.TotalRecovered,
       color: 'green',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15
     },
     {
       name: 'Deaths',
-      value: globalData.deaths,
+      value: data.TotalDeaths,
       color: 'red',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15
@@ -77,12 +55,12 @@ const Global = ({data}) => {
         paddingLeft="15"
       />
       <View style={styles.row}>
-        <GlobalCard title={'Confirmed'} data={formatNumber(globalData.confirmed)} />
-        <GlobalCard title={'Recovered'} data={formatNumber(globalData.recovered)} />
+        <GlobalCard title={'Confirmed'} data={formatNumber(data.TotalConfirmed)} />
+        <GlobalCard title={'Recovered'} data={formatNumber(data.TotalRecovered)} />
       </View>
       <View style={styles.row}>
-        <GlobalCard title={'Deaths'} data={formatNumber(globalData.deaths)} />
-        <GlobalCard title={'Active'} data={formatNumber(globalData.active)} />
+        <GlobalCard title={'Deaths'} data={formatNumber(data.TotalDeaths)} />
+        <GlobalCard title={'Active'} data={formatNumber(active)} />
       </View>
     </>
   );

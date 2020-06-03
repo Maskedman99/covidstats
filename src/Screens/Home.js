@@ -13,15 +13,17 @@ const Home = () => {
   const theme = useContext(ThemeContext);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [globalData, setGlobalData] = useState([]);
 
   useEffect(() => {
     const getAxios = async url => {
       const response = await axios.get(url);
-      setData(response.data.data.sort((a, b) => b.latest_data.confirmed - a.latest_data.confirmed));
+      setGlobalData(response.data.Global);
+      setData(response.data.Countries.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed));
       setIsLoading(false);
     };
 
-    getAxios('https://corona-api.com/countries');
+    getAxios('https://api.covid19api.com/summary');
   }, []);
 
   return isLoading ? (
@@ -29,7 +31,7 @@ const Home = () => {
   ) : (
     <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
       <HomeHeader />
-      <Global data={data} />
+      <Global data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />
     </ScrollView>
   );

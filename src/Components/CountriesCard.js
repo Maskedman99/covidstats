@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {Card, ThemedText} from './Common';
-import {formatNumber} from '../Logic/misc';
+import {formatNumber, shortenCountryName} from '../Logic/misc';
 
 const CountriesCard = ({topCountries}) => {
   return (
@@ -11,35 +11,25 @@ const CountriesCard = ({topCountries}) => {
         <View>
           <ThemedText style={styles.header}>Country</ThemedText>
           {topCountries.map((item, id) => {
-            return <ThemedText style={styles.data}>{item.name}</ThemedText>;
+            return <ThemedText style={styles.data}>{shortenCountryName(item.Country)}</ThemedText>;
           })}
         </View>
         <View>
           <ThemedText style={styles.header}>Confirmed</ThemedText>
           {topCountries.map((item, id) => {
-            return (
-              <ThemedText style={styles.data}>
-                {formatNumber(item.latest_data.confirmed)}
-              </ThemedText>
-            );
+            return <ThemedText style={styles.data}>{formatNumber(item.TotalConfirmed)}</ThemedText>;
           })}
         </View>
         <View>
           <ThemedText style={styles.header}>Recovered</ThemedText>
           {topCountries.map((item, id) => {
-            return (
-              <ThemedText style={styles.data}>
-                {formatNumber(item.latest_data.recovered)}
-              </ThemedText>
-            );
+            return <ThemedText style={styles.data}>{formatNumber(item.TotalRecovered)}</ThemedText>;
           })}
         </View>
         <View>
           <ThemedText style={styles.header}>Deaths</ThemedText>
           {topCountries.map((item, id) => {
-            return (
-              <ThemedText style={styles.data}>{formatNumber(item.latest_data.deaths)}</ThemedText>
-            );
+            return <ThemedText style={styles.data}>{formatNumber(item.TotalDeaths)}</ThemedText>;
           })}
         </View>
       </View>
