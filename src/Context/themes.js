@@ -1,6 +1,6 @@
 import React from 'react';
 
-const themes = {
+export const themes = {
   light: {
     card: '#eeeeee',
     foreground: '#000000',

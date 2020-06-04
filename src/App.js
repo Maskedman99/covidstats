@@ -5,6 +5,8 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {ThemeContext} from './Context/themes';
 
+import DrawerContent from './Components/DrawerContent';
+
 import Home from './Screens/Home';
 import CountryList from './Screens/CountryList';
 
@@ -19,10 +21,13 @@ const App = () => {
       <NavigationContainer>
         <Drawer.Navigator
           initialRouteName="Home"
+          drawerContent={props => <DrawerContent {...props} />}
           drawerContentOptions={{
             backgroundColor: theme.background,
             activeTintColor: theme.foreground,
-            inactiveTintColor: theme.foreground
+            inactiveTintColor: theme.foreground,
+            activeBackgroundColor: 'white' //isn't working
+            //inactiveBackgroundColor: 'black'
           }}>
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="Country" component={CountryList} />
