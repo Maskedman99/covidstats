@@ -19,21 +19,22 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [globalData, setGlobalData] = useState([]);
 
-  const onRefresh = async () => {
-    setRefreshing(true);
-    const response = await axios.get(apiList.countries);
+  const fetchData = async () => {
+    const response = await axios.get(`${apiList.countries}?sort=cases`);
     const response1 = await axios.get(apiList.global);
     setGlobalData(response1.data);
     setData(response.data);
+  };
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await fetchData();
     setRefreshing(false);
   };
 
   useEffect(() => {
     const getAxios = async () => {
-      const response = await axios.get(`${apiList.countries}?sort=cases`);
-      const response1 = await axios.get(apiList.global);
-      setGlobalData(response1.data);
-      setData(response.data);
+      await fetchData();
       setIsLoading(false);
     };
 
