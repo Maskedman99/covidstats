@@ -3,14 +3,14 @@ import {View, StyleSheet, FlatList} from 'react-native';
 import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
 
 import ColorPalette from './ColorPalette';
-import {ThemedText} from './Common';
+import {ThemedText, Divider} from './Common';
 import countriesList from '../Assets/countriesList.json';
 import LabelCountry from './LabelCountry';
 
 const DrawerContent = props => {
   return (
-    <View style={styles.container}>
-      <DrawerContentScrollView {...props} nestedScrollEnabled>
+    <View style={[styles.container, {backgroundColor: props.backgroundColor}]}>
+      <DrawerContentScrollView {...props}>
         <DrawerItem
           {...props}
           label="Home"
@@ -25,24 +25,32 @@ const DrawerContent = props => {
             props.navigation.navigate('Country');
           }}
         />
-
-        <FlatList
-          nestedScrollEnabled
-          style={[styles.flatlist, {backgroundColor: props.backgroundColor}]}
-          data={countriesList}
-          renderItem={({item}) => <LabelCountry country={item} />}
-          keyExtractor={item => item.ISO2}
+        <DrawerItem
+          {...props}
+          label="About"
+          onPress={() => {
+            props.navigation.navigate('About');
+          }}
         />
       </DrawerContentScrollView>
+      <Divider />
 
-      <View style={[styles.innerContainer, {backgroundColor: props.backgroundColor}]}>
+      <FlatList
+        style={styles.flatlist}
+        data={countriesList}
+        renderItem={({item}) => <LabelCountry country={item} />}
+        keyExtractor={item => item.ISO2}
+        ItemSeparatorComponent={() => <Divider />}
+      />
+      <Divider />
+
+      <View style={styles.innerContainer}>
         <ThemedText>Themes</ThemedText>
         <ColorPalette />
       </View>
+      <Divider />
 
-      <View style={{backgroundColor: props.backgroundColor}}>
-        <ThemedText style={styles.version}>App Version</ThemedText>
-      </View>
+      <ThemedText style={styles.version}>App Version</ThemedText>
     </View>
   );
 };
@@ -53,13 +61,12 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     paddingHorizontal: 20,
-    paddingVertical: 10
+    paddingVertical: 8
   },
   flatlist: {
-    maxHeight: 200,
-    paddingLeft: 10,
-    marginLeft: 20,
-    marginRight: 5
+    flex: 1,
+    paddingLeft: 8,
+    paddingRight: 4
   },
   version: {
     textAlign: 'center',
