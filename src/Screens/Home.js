@@ -9,6 +9,8 @@ import HomeHeader from '../Components/HomeHeader';
 import Global from '../Components/Global';
 import CountriesCard from '../Components/CountriesCard';
 
+import apiList from '../Assets/apiList.json';
+
 const Home = () => {
   const theme = useContext(ThemeContext);
 
@@ -19,21 +21,23 @@ const Home = () => {
 
   const onRefresh = async () => {
     setRefreshing(true);
-    const response = await axios.get('https://api.covid19api.com/summary');
-    setGlobalData(response.data.Global);
-    setData(response.data.Countries.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed));
+    const response = await axios.get(apiList.countries);
+    const response1 = await axios.get(apiList.global);
+    setGlobalData(response1.data);
+    setData(response.data);
     setRefreshing(false);
   };
 
   useEffect(() => {
-    const getAxios = async url => {
-      const response = await axios.get(url);
-      setGlobalData(response.data.Global);
-      setData(response.data.Countries.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed));
+    const getAxios = async () => {
+      const response = await axios.get(`${apiList.countries}?sort=cases`);
+      const response1 = await axios.get(apiList.global);
+      setGlobalData(response1.data);
+      setData(response.data);
       setIsLoading(false);
     };
 
-    getAxios('https://api.covid19api.com/summary');
+    getAxios();
   }, []);
 
   return isLoading ? (

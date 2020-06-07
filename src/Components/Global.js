@@ -6,26 +6,24 @@ import GlobalCard from './GlobalCard';
 import {formatNumber} from '../Logic/misc';
 
 const Global = ({data}) => {
-  const active = data.TotalConfirmed - data.TotalRecovered - data.TotalDeaths;
-
   const pieData = [
     {
       name: 'Active',
-      value: active,
+      value: data.active,
       color: 'orange',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15
     },
     {
       name: 'Recovered',
-      value: data.TotalRecovered,
+      value: data.recovered,
       color: 'green',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15
     },
     {
       name: 'Deaths',
-      value: data.TotalDeaths,
+      value: data.deaths,
       color: 'red',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15
@@ -55,12 +53,12 @@ const Global = ({data}) => {
         paddingLeft="15"
       />
       <View style={styles.row}>
-        <GlobalCard title={'Confirmed'} data={formatNumber(data.TotalConfirmed)} />
-        <GlobalCard title={'Recovered'} data={formatNumber(data.TotalRecovered)} />
+        <GlobalCard title={'Confirmed'} data={formatNumber(data.cases)} />
+        <GlobalCard title={'Recovered'} data={formatNumber(data.recovered)} />
       </View>
       <View style={styles.row}>
-        <GlobalCard title={'Deaths'} data={formatNumber(data.TotalDeaths)} />
-        <GlobalCard title={'Active'} data={formatNumber(active)} />
+        <GlobalCard title={'Deaths'} data={formatNumber(data.deaths)} />
+        <GlobalCard title={'Active'} data={formatNumber(data.active)} />
       </View>
     </>
   );
