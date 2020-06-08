@@ -34,16 +34,16 @@ const DrawerContent = props => {
       </DrawerContentScrollView>
       <Divider />
 
+      <View style={styles.innerContainer}>
+        <ThemedText>Themes</ThemedText>
+        <ColorPalette />
+      </View>
+      <Divider />
+
       <SearchCountry />
       <Divider />
 
       <KeyboardAvoidingView behavior={'height'}>
-        <View style={styles.innerContainer}>
-          <ThemedText>Themes</ThemedText>
-          <ColorPalette />
-        </View>
-        <Divider />
-
         <ThemedText style={styles.version}>App Version</ThemedText>
       </KeyboardAvoidingView>
     </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     paddingHorizontal: 20,
-    paddingVertical: 8
+    paddingVertical: 4
   },
   version: {
     textAlign: 'center',

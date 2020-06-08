@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {StyleSheet, TextInput, FlatList} from 'react-native';
 
 import {Divider} from '../Components/Common';
 import LabelCountry from '../Components/LabelCountry';
 
+import {ThemeContext} from '../Context/themes';
+
 import countriesList from '../Assets/countriesList.json';
 
 const SearchCountry = () => {
   const [filteredData, setFilteredData] = useState(countriesList);
+  const theme = useContext(ThemeContext);
 
   const handleSearch = text => {
     const x = countriesList.filter(item => item.Country.toLowerCase().includes(text.toLowerCase()));
@@ -17,10 +20,10 @@ const SearchCountry = () => {
   return (
     <>
       <TextInput
-        style={styles.input}
+        style={[styles.input, {borderColor: theme.divider, color: theme.foreground}]}
         placeholder="Search country"
         onChangeText={text => handleSearch(text)}
-        placeholderTextColor="white"
+        placeholderTextColor={theme.divider}
       />
       <FlatList
         style={styles.flatlist}
@@ -36,17 +39,15 @@ const SearchCountry = () => {
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 12
-  },
-  inputText: {
-    color: 'white'
+    borderRadius: 12,
+    marginHorizontal: 4
   },
   flatlist: {
     flex: 1,
     paddingLeft: 8,
-    paddingRight: 4
+    paddingRight: 4,
+    paddingTop: 2
   }
 });
 
