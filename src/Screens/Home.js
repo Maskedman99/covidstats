@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {ScrollView, StyleSheet, RefreshControl} from 'react-native';
 import axios from 'axios';
+import dayjs from 'dayjs';
+var relativeTime = require('dayjs/plugin/relativeTime');
 
 import {ThemeContext} from '../Context/themes';
 
@@ -20,6 +22,8 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
   const [globalData, setGlobalData] = useState([]);
+
+  dayjs.extend(relativeTime);
 
   const fetchData = async () => {
     const response = await axios.get(`${apiList.countries}?sort=cases`);
@@ -42,7 +46,6 @@ const Home = () => {
 
     getAxios();
   }, []);
-
   return isLoading ? (
     <Spinner />
   ) : (
@@ -57,6 +60,7 @@ const Home = () => {
         />
       }>
       <HomeHeader />
+
       <Global data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />
       <ThemedText style={styles.todayHeader}>Today</ThemedText>
@@ -65,6 +69,9 @@ const Home = () => {
         recovered={globalData.todayRecovered}
         confirmed={globalData.todayCases}
       />
+      <ThemedText style={[styles.update, {color: theme.divider}]}>{`Data updated ${dayjs(
+        globalData.updated
+      ).fromNow()}. Pull down to refresh`}</ThemedText>
     </ScrollView>
   );
 };
@@ -72,6 +79,9 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  update: {
+    textAlign: 'center'
   },
   todayHeader: {
     textAlign: 'center',

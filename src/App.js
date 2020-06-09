@@ -8,7 +8,6 @@ import {ThemeContext} from './Context/themes';
 import DrawerContent from './Components/DrawerContent';
 
 import Home from './Screens/Home';
-import CountryList from './Screens/CountryList';
 import About from './Screens/About';
 
 const Drawer = createDrawerNavigator();
@@ -31,7 +30,6 @@ const App = () => {
             //inactiveBackgroundColor: 'black'
           }}>
           <Drawer.Screen name="Home" component={Home} />
-          <Drawer.Screen name="Country" component={CountryList} />
           <Drawer.Screen name="About" component={About} />
         </Drawer.Navigator>
       </NavigationContainer>

@@ -19,13 +19,6 @@ const DrawerContent = props => {
         />
         <DrawerItem
           {...props}
-          label="Country"
-          onPress={() => {
-            props.navigation.navigate('Country');
-          }}
-        />
-        <DrawerItem
-          {...props}
           label="About"
           onPress={() => {
             props.navigation.navigate('About');
