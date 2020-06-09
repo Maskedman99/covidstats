@@ -8,6 +8,8 @@ import Spinner from '../Components/Spinner';
 import HomeHeader from '../Components/HomeHeader';
 import Global from '../Components/Global';
 import CountriesCard from '../Components/CountriesCard';
+import TodayDetails from '../Components/TodayDetails';
+import {ThemedText} from '../Components/Common';
 
 import apiList from '../Assets/apiList.json';
 
@@ -57,6 +59,12 @@ const Home = () => {
       <HomeHeader />
       <Global data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />
+      <ThemedText style={styles.todayHeader}>Today</ThemedText>
+      <TodayDetails
+        deaths={globalData.todayDeaths}
+        recovered={globalData.todayRecovered}
+        confirmed={globalData.todayCases}
+      />
     </ScrollView>
   );
 };
@@ -64,6 +72,11 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  todayHeader: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 });
 

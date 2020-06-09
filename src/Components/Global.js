@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 
-import GlobalCard from './GlobalCard';
+import {TitleDataCard} from './Common';
 import {formatNumber} from '../Logic/misc';
 
 const Global = ({data}) => {
@@ -53,12 +53,12 @@ const Global = ({data}) => {
         paddingLeft="15"
       />
       <View style={styles.row}>
-        <GlobalCard title={'Confirmed'} data={formatNumber(data.cases)} />
-        <GlobalCard title={'Recovered'} data={formatNumber(data.recovered)} />
+        <TitleDataCard title={'Confirmed'} data={formatNumber(data.cases)} />
+        <TitleDataCard title={'Recovered'} data={formatNumber(data.recovered)} />
       </View>
       <View style={styles.row}>
-        <GlobalCard title={'Deaths'} data={formatNumber(data.deaths)} />
-        <GlobalCard title={'Active'} data={formatNumber(data.active)} />
+        <TitleDataCard title={'Deaths'} data={formatNumber(data.deaths)} />
+        <TitleDataCard title={'Active'} data={formatNumber(data.active)} />
       </View>
     </>
   );

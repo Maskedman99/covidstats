@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
-import {ThemedText, Card} from './Common';
+import {ThemedText, Card} from '.';
 
-const GlobalCard = ({title, data}) => {
+const TitleDataCard = ({title, data}) => {
   return (
     <Card>
       <ThemedText style={styles.header}>{title}</ThemedText>
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default GlobalCard;
+export default TitleDataCard;
