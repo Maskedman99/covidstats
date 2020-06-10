@@ -16,7 +16,6 @@ const SearchCountry = () => {
     const x = countriesList.filter(item => item.Country.toLowerCase().includes(text.toLowerCase()));
     setFilteredData(x);
   };
-
   return (
     <>
       <TextInput

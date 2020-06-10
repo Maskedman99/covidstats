@@ -8,7 +8,7 @@ const ColorPalette = () => {
 
   return (
     <View style={styles.row}>
-      <TouchableHighlight onPress={() => changeTheme('light')}>
+      <TouchableHighlight onPress={() => changeTheme('light')} style={styles.palette}>
         <View
           style={[
             styles.palette,
@@ -16,7 +16,7 @@ const ColorPalette = () => {
           ]}
         />
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => changeTheme('blue')}>
+      <TouchableHighlight onPress={() => changeTheme('blue')} style={styles.palette}>
         <View
           style={[
             styles.palette,
@@ -24,7 +24,7 @@ const ColorPalette = () => {
           ]}
         />
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => changeTheme('grey')}>
+      <TouchableHighlight onPress={() => changeTheme('grey')} style={styles.palette}>
         <View
           style={[
             styles.palette,
@@ -32,7 +32,7 @@ const ColorPalette = () => {
           ]}
         />
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => changeTheme('dark')}>
+      <TouchableHighlight onPress={() => changeTheme('dark')} style={styles.palette}>
         <View
           style={[
             styles.palette,

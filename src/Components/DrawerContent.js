@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
 
@@ -24,16 +24,16 @@ const DrawerContent = props => {
             props.navigation.navigate('About');
           }}
         />
+        <Divider />
       </DrawerContentScrollView>
+
+      <SearchCountry />
       <Divider />
 
       <View style={styles.innerContainer}>
         <ThemedText>Themes</ThemedText>
         <ColorPalette />
       </View>
-      <Divider />
-
-      <SearchCountry />
       <Divider />
 
       <KeyboardAvoidingView behavior={'height'}>
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DrawerContent;
+export default memo(DrawerContent);
