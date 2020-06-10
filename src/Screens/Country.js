@@ -5,12 +5,13 @@ import {ThemeContext} from '../Context/themes';
 
 import {ThemedText} from '../Components/Common';
 
-const Country = () => {
+const Country = ({route}) => {
   const {theme} = useContext(ThemeContext);
 
   return (
     <View style={[styles.container, {backgroundColor: theme.background}]}>
-      <ThemedText>Hello</ThemedText>
+      <ThemedText>{route.params.country.Country}</ThemedText>
+      <ThemedText>{route.params.country.ISO2}</ThemedText>
     </View>
   );
 };

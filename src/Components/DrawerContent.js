@@ -44,12 +44,14 @@ const DrawerContent = props => {
       <Divider />
 
       {!isKeyboardOpen && (
-        <View style={styles.innerContainer}>
-          <ThemedText>Themes</ThemedText>
-          <ColorPalette />
-        </View>
+        <>
+          <View style={styles.innerContainer}>
+            <ThemedText>Themes</ThemedText>
+            <ColorPalette />
+          </View>
+          <Divider />
+        </>
       )}
-      <Divider />
       {!isKeyboardOpen && <ThemedText style={styles.version}>App Version</ThemedText>}
     </View>
   );

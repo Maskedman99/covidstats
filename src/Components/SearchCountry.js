@@ -9,7 +9,9 @@ import countriesList from '../Assets/countriesList.json';
 
 const LabelCountry = ({country, navigation}) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Country')}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate('Country', {country: country})}>
       <ThemedText style={styles.country}>{country.Country}</ThemedText>
     </TouchableOpacity>
   );
@@ -20,7 +22,6 @@ const MemoizedLabelCountry = React.memo(LabelCountry);
 const SearchCountry = ({navigation}) => {
   const [filteredData, setFilteredData] = useState(countriesList);
   const {theme} = useContext(ThemeContext);
-  const ITEM_HEIGHT = 19;
 
   const handleSearch = text => {
     const x = countriesList.filter(item => item.Country.toLowerCase().includes(text.toLowerCase()));
