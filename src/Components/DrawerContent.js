@@ -1,55 +1,69 @@
-import React, {memo} from 'react';
-import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
-import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
+import React, {memo, useState, useEffect} from 'react';
+import {View, StyleSheet, Keyboard} from 'react-native';
 
 import ColorPalette from './ColorPalette';
 import {ThemedText, Divider} from './Common';
 import SearchCountry from '../Components/SearchCountry';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 
 const DrawerContent = props => {
-  return (
-    <View style={[styles.container, {backgroundColor: props.backgroundColor}]}>
-      <DrawerContentScrollView {...props}>
-        <DrawerItem
-          {...props}
-          label="Home"
-          onPress={() => {
-            props.navigation.navigate('Home');
-          }}
-        />
-        <DrawerItem
-          {...props}
-          label="About"
-          onPress={() => {
-            props.navigation.navigate('About');
-          }}
-        />
-        <Divider />
-      </DrawerContentScrollView>
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
+      setIsKeyboardOpen(true); // or some other action
+    });
+    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setIsKeyboardOpen(false); // or some other action
+    });
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      {!isKeyboardOpen && (
+        <View>
+          <TouchableHighlight
+            onPress={() => props.navigation.navigate('Home')}
+            style={styles.innerContainer}>
+            <ThemedText>Home</ThemedText>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => props.navigation.navigate('About')}
+            style={styles.innerContainer}>
+            <ThemedText>About</ThemedText>
+          </TouchableHighlight>
+          <Divider />
+        </View>
+      )}
       <SearchCountry navigation={props.navigation} />
       <Divider />
 
-      <View style={styles.innerContainer}>
-        <ThemedText>Themes</ThemedText>
-        <ColorPalette />
-      </View>
+      {!isKeyboardOpen && (
+        <View style={styles.innerContainer}>
+          <ThemedText>Themes</ThemedText>
+          <ColorPalette />
+        </View>
+      )}
       <Divider />
-
-      <KeyboardAvoidingView behavior={'height'}>
-        <ThemedText style={styles.version}>App Version</ThemedText>
-      </KeyboardAvoidingView>
+      {!isKeyboardOpen && <ThemedText style={styles.version}>App Version</ThemedText>}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingLeft: 4,
+    paddingTop: 24
   },
   innerContainer: {
     paddingHorizontal: 20,
-    paddingVertical: 4
+    paddingVertical: 20
   },
   version: {
     textAlign: 'center',

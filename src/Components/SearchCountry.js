@@ -15,9 +15,12 @@ const LabelCountry = ({country, navigation}) => {
   );
 };
 
+const MemoizedLabelCountry = React.memo(LabelCountry);
+
 const SearchCountry = ({navigation}) => {
   const [filteredData, setFilteredData] = useState(countriesList);
   const {theme} = useContext(ThemeContext);
+  const ITEM_HEIGHT = 19;
 
   const handleSearch = text => {
     const x = countriesList.filter(item => item.Country.toLowerCase().includes(text.toLowerCase()));
@@ -34,7 +37,7 @@ const SearchCountry = ({navigation}) => {
       <FlatList
         style={styles.flatlist}
         data={filteredData}
-        renderItem={({item}) => <LabelCountry country={item} navigation={navigation} />}
+        renderItem={({item}) => <MemoizedLabelCountry country={item} navigation={navigation} />}
         keyExtractor={item => item.ISO2}
         ItemSeparatorComponent={() => <Divider />}
       />

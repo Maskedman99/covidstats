@@ -41,11 +41,13 @@ const App = () => {
           initialRouteName="Home"
           drawerContent={props => <DrawerContent {...props} />}
           drawerContentOptions={{
-            backgroundColor: Theme.background,
             activeTintColor: Theme.foreground,
             inactiveTintColor: Theme.foreground,
             activeBackgroundColor: 'white' //isn't working
             //inactiveBackgroundColor: 'black'
+          }}
+          drawerStyle={{
+            backgroundColor: Theme.background
           }}>
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="About" component={About} />

@@ -10,4 +10,4 @@ const Divider = ({style}) => {
 
 const styles = StyleSheet.create({divider: {height: 1, margin: 4}});
 
-export default Divider;
+export default React.memo(Divider);
