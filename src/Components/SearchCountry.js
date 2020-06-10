@@ -1,14 +1,21 @@
 import React, {useState, useContext} from 'react';
-import {StyleSheet, TextInput, FlatList} from 'react-native';
+import {StyleSheet, TextInput, FlatList, TouchableOpacity} from 'react-native';
 
-import {Divider} from '../Components/Common';
-import LabelCountry from '../Components/LabelCountry';
+import {Divider, ThemedText} from '../Components/Common';
 
 import {ThemeContext} from '../Context/themes';
 
 import countriesList from '../Assets/countriesList.json';
 
-const SearchCountry = () => {
+const LabelCountry = ({country, navigation}) => {
+  return (
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Country')}>
+      <ThemedText style={styles.country}>{country.Country}</ThemedText>
+    </TouchableOpacity>
+  );
+};
+
+const SearchCountry = ({navigation}) => {
   const [filteredData, setFilteredData] = useState(countriesList);
   const {theme} = useContext(ThemeContext);
 
@@ -27,7 +34,7 @@ const SearchCountry = () => {
       <FlatList
         style={styles.flatlist}
         data={filteredData}
-        renderItem={({item}) => <LabelCountry country={item} />}
+        renderItem={({item}) => <LabelCountry country={item} navigation={navigation} />}
         keyExtractor={item => item.ISO2}
         ItemSeparatorComponent={() => <Divider />}
       />
@@ -47,6 +54,13 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingRight: 4,
     paddingTop: 2
+  },
+  container: {
+    paddingVertical: 4,
+    paddingLeft: 12
+  },
+  country: {
+    fontSize: 14
   }
 });
 

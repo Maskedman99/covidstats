@@ -27,7 +27,7 @@ const DrawerContent = props => {
         <Divider />
       </DrawerContentScrollView>
 
-      <SearchCountry />
+      <SearchCountry navigation={props.navigation} />
       <Divider />
 
       <View style={styles.innerContainer}>

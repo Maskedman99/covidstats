@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import {ThemeContext} from '../Context/themes';
 
@@ -9,10 +9,18 @@ const Country = () => {
   const {theme} = useContext(ThemeContext);
 
   return (
-    <View style={{backgroundColor: theme.background}}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <ThemedText>Hello</ThemedText>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 
 export default Country;
