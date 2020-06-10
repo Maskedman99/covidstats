@@ -4,7 +4,7 @@ import {ActivityIndicator, View, StyleSheet} from 'react-native';
 import {ThemeContext} from '../Context/themes';
 
 const Spinner = () => {
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
   return (
     <View style={[styles.container, {backgroundColor: theme.background}]}>
       <ActivityIndicator color={theme.foreground} size="large" />

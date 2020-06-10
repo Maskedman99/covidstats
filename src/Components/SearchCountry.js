@@ -10,7 +10,7 @@ import countriesList from '../Assets/countriesList.json';
 
 const SearchCountry = () => {
   const [filteredData, setFilteredData] = useState(countriesList);
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
 
   const handleSearch = text => {
     const x = countriesList.filter(item => item.Country.toLowerCase().includes(text.toLowerCase()));

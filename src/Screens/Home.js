@@ -16,7 +16,7 @@ import {ThemedText} from '../Components/Common';
 import apiList from '../Assets/apiList.json';
 
 const Home = () => {
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);

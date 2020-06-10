@@ -1,21 +1,14 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, TouchableHighlight} from 'react-native';
 
 import {themes, ThemeContext} from '../Context/themes';
 
 const ColorPalette = () => {
-  const theme = useContext(ThemeContext);
-  const [selectedTheme, setSelectedTheme] = useState(theme);
-
-  const handleThemeChange = themeValues => {
-    setSelectedTheme(themeValues);
-  };
-
-  console.log(selectedTheme);
+  const {changeTheme} = useContext(ThemeContext);
 
   return (
     <View style={styles.row}>
-      <TouchableHighlight onPress={() => handleThemeChange(themes.light)}>
+      <TouchableHighlight onPress={() => changeTheme('light')}>
         <View
           style={[
             styles.palette,
@@ -23,7 +16,7 @@ const ColorPalette = () => {
           ]}
         />
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => handleThemeChange(themes.blue)}>
+      <TouchableHighlight onPress={() => changeTheme('blue')}>
         <View
           style={[
             styles.palette,
@@ -31,7 +24,7 @@ const ColorPalette = () => {
           ]}
         />
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => handleThemeChange(themes.grey)}>
+      <TouchableHighlight onPress={() => changeTheme('grey')}>
         <View
           style={[
             styles.palette,
@@ -39,7 +32,7 @@ const ColorPalette = () => {
           ]}
         />
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => handleThemeChange(themes.dark)}>
+      <TouchableHighlight onPress={() => changeTheme('dark')}>
         <View
           style={[
             styles.palette,

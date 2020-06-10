@@ -9,7 +9,7 @@ import {ThemedText} from '../Components/Common';
 import menuIcon from '../Assets/menuPath.json';
 
 const HomeHeader = () => {
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
   const navigation = useNavigation();
 
   return (

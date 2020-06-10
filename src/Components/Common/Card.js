@@ -4,7 +4,7 @@ import {View, StyleSheet} from 'react-native';
 import {ThemeContext} from '../../Context/themes';
 
 const Card = ({children, style}) => {
-  const themes = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
 
   return (
     <View
@@ -12,8 +12,8 @@ const Card = ({children, style}) => {
         styles.container,
         style,
         {
-          borderColor: themes.divider,
-          backgroundColor: themes.card
+          borderColor: theme.divider,
+          backgroundColor: theme.card
         }
       ]}>
       {children}

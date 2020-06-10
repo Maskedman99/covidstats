@@ -4,7 +4,7 @@ import {View, StyleSheet} from 'react-native';
 import {ThemeContext} from '../../Context/themes';
 
 const Divider = ({style}) => {
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
   return <View style={[styles.divider, {backgroundColor: theme.divider}, style]} />;
 };
 
