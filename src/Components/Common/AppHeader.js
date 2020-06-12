@@ -3,12 +3,12 @@ import {View, StyleSheet, TouchableHighlight} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
 
-import {ThemeContext} from '../Context/themes';
+import {ThemeContext} from '../../Context/themes';
 
-import {ThemedText} from '../Components/Common';
-import menuIcon from '../Assets/menuPath.json';
+import {ThemedText} from '.';
+import menuIcon from '../../Assets/menuPath.json';
 
-const HomeHeader = () => {
+const AppHeader = ({title}) => {
   const {theme} = useContext(ThemeContext);
   const navigation = useNavigation();
 
@@ -20,7 +20,7 @@ const HomeHeader = () => {
         </Svg>
       </TouchableHighlight>
       <View style={styles.innerContainer}>
-        <ThemedText style={styles.header}>Covid-19 Global Data</ThemedText>
+        <ThemedText style={styles.header}>{title}</ThemedText>
       </View>
     </View>
   );
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeHeader;
+export default React.memo(AppHeader);

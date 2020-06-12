@@ -7,11 +7,10 @@ var relativeTime = require('dayjs/plugin/relativeTime');
 import {ThemeContext} from '../Context/themes';
 
 import Spinner from '../Components/Spinner';
-import HomeHeader from '../Components/HomeHeader';
 import Global from '../Components/Global';
 import CountriesCard from '../Components/CountriesCard';
 import TodayDetails from '../Components/TodayDetails';
-import {ThemedText} from '../Components/Common';
+import {ThemedText, AppHeader} from '../Components/Common';
 
 import apiList from '../Assets/apiList.json';
 
@@ -46,6 +45,7 @@ const Home = () => {
 
     getAxios();
   }, []);
+
   return isLoading ? (
     <Spinner />
   ) : (
@@ -59,7 +59,7 @@ const Home = () => {
           progressBackgroundColor={theme.card}
         />
       }>
-      <HomeHeader />
+      <AppHeader title={'Covid-19 Global Data'} />
 
       <Global data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />
@@ -69,7 +69,7 @@ const Home = () => {
         recovered={globalData.todayRecovered}
         confirmed={globalData.todayCases}
       />
-      <ThemedText style={[styles.update, {color: theme.divider}]}>{`Data updated ${dayjs(
+      <ThemedText style={styles.update}>{`Data updated ${dayjs(
         globalData.updated
       ).fromNow()}. Pull down to refresh`}</ThemedText>
     </ScrollView>
