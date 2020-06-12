@@ -9,7 +9,7 @@ import {ThemeContext} from '../Context/themes';
 import Spinner from '../Components/Spinner';
 import Global from '../Components/Global';
 import TodayDetails from '../Components/TodayDetails';
-import {ThemedText, AppHeader} from '../Components/Common';
+import {ThemedText, AppHeader, FlagImage} from '../Components/Common';
 
 import apiList from '../Assets/apiList.json';
 
@@ -60,6 +60,7 @@ const Country = ({route}) => {
         />
       }>
       <AppHeader title={country.Country} />
+      <FlagImage iso2={country.ISO2} />
 
       <Global data={data} />
       <ThemedText style={styles.todayHeader}>Today</ThemedText>
