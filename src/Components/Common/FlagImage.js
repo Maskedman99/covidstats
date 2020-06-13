@@ -17,12 +17,12 @@ const FlagImage = ({iso2}) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginHorizontal: 4,
-    height: 250,
-    borderRadius: 35,
-    borderWidth: 1,
-    borderColor: 'white',
-    overflow: 'hidden'
+    marginTop: -70,
+    height: 230,
+    borderBottomRightRadius: 24,
+    borderBottomLeftRadius: 24,
+    overflow: 'hidden',
+    backgroundColor: 'hsla(0, 0%, 0%, 0.06)'
   },
   image: {
     borderRadius: 16,

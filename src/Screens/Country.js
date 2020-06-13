@@ -59,7 +59,7 @@ const Country = ({route}) => {
           progressBackgroundColor={theme.card}
         />
       }>
-      <AppHeader title={country.Country} />
+      <AppHeader title={country.Country} style={styles.appHeader} onFlag={true} />
       <FlagImage iso2={country.ISO2} />
 
       <Global data={data} />
@@ -87,6 +87,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold'
+  },
+  appHeader: {
+    zIndex: 3
   }
 });
 
