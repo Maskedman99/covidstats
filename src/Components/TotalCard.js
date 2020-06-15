@@ -5,7 +5,7 @@ import {PieChart} from 'react-native-chart-kit';
 import {TitleDataCard} from './Common';
 import {formatNumber} from '../Logic/misc';
 
-const Global = ({data}) => {
+const TotalCard = ({data}) => {
   const pieData = [
     {
       name: 'Active',
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Global;
+export default TotalCard;

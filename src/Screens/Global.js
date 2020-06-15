@@ -7,26 +7,27 @@ var relativeTime = require('dayjs/plugin/relativeTime');
 import {ThemeContext} from '../Context/themes';
 
 import Spinner from '../Components/Spinner';
-import Global from '../Components/TotalCard';
+import TotalCard from '../Components/TotalCard';
+import CountriesCard from '../Components/CountriesCard';
 import TodayDetails from '../Components/TodayDetails';
-import {ThemedText, AppHeader, FlagImage} from '../Components/Common';
+import {ThemedText, AppHeader} from '../Components/Common';
 
 import apiList from '../Assets/apiList.json';
-import TotalCard from '../Components/TotalCard';
 
-const Country = ({route}) => {
-  const country = route.params.country;
-
+const Global = () => {
   const {theme} = useContext(ThemeContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
+  const [globalData, setGlobalData] = useState([]);
 
   dayjs.extend(relativeTime);
 
   const fetchData = async () => {
-    const response = await axios.get(`${apiList.countries}/${country.ISO2}`);
+    const response = await axios.get(`${apiList.countries}?sort=cases`);
+    const response1 = await axios.get(apiList.global);
+    setGlobalData(response1.data);
     setData(response.data);
   };
 
@@ -37,15 +38,13 @@ const Country = ({route}) => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     const getAxios = async () => {
       await fetchData();
       setIsLoading(false);
     };
 
     getAxios();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [country]);
+  }, []);
 
   return isLoading ? (
     <Spinner />
@@ -60,18 +59,18 @@ const Country = ({route}) => {
           progressBackgroundColor={theme.card}
         />
       }>
-      <AppHeader title={country.Country} style={styles.appHeader} onFlag={true} />
-      <FlagImage iso2={country.ISO2} />
+      <AppHeader title={'Covid-19 Global Data'} onFlag={false} />
 
-      <TotalCard data={data} />
+      <TotalCard data={globalData} />
+      <CountriesCard topCountries={data.slice(0, 10)} />
       <ThemedText style={styles.todayHeader}>Today</ThemedText>
       <TodayDetails
-        deaths={data.todayDeaths}
-        recovered={data.todayRecovered}
-        confirmed={data.todayCases}
+        deaths={globalData.todayDeaths}
+        recovered={globalData.todayRecovered}
+        confirmed={globalData.todayCases}
       />
       <ThemedText style={styles.update}>{`Data updated ${dayjs(
-        data.updated
+        globalData.updated
       ).fromNow()}. Pull down to refresh`}</ThemedText>
     </ScrollView>
   );
@@ -88,10 +87,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold'
-  },
-  appHeader: {
-    zIndex: 3
   }
 });
 
-export default React.memo(Country);
+export default Global;
