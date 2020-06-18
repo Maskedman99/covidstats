@@ -8,7 +8,7 @@ const Tab = createMaterialTopTabNavigator();
 
 const Home = () => {
   return (
-    <Tab.Navigator screenOptions={{tabBarVisible: false}}>
+    <Tab.Navigator tabBar={() => null}>
       <Tab.Screen component={Global} name="Global" />
       <Tab.Screen component={GlobalHistory} name="Global History" />
     </Tab.Navigator>
