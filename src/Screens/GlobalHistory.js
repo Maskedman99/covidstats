@@ -1,12 +1,12 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, RefreshControl} from 'react-native';
 import axios from 'axios';
 
 import {ThemeContext} from '../Context/themes';
 
 import {ThemedText} from '../Components/Common';
 import Spinner from '../Components/Spinner';
-import HistoryHeatmap from '../Components/HistoryHeatmap';
+import Plot from '../Components/Plot';
 
 import apiList from '../Assets/apiList.json';
 
@@ -40,9 +40,20 @@ const GlobalHistory = () => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
+    <ScrollView
+      style={[styles.container, {backgroundColor: theme.background}]}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={[theme.foreground]}
+          progressBackgroundColor={theme.card}
+        />
+      }>
       <ThemedText>Global History</ThemedText>
-      <HistoryHeatmap data={data} />
+      <Plot data={data.cases} title={'Cases'} />
+      <Plot data={data.recovered} title={'Recovered'} />
+      <Plot data={data.deaths} title={'Deaths'} />
     </ScrollView>
   );
 };
