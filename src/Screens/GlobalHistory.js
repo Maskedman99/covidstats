@@ -51,9 +51,9 @@ const GlobalHistory = () => {
         />
       }>
       <ThemedText>Global History</ThemedText>
-      <Plot data={data.cases} title={'Cases'} />
-      <Plot data={data.recovered} title={'Recovered'} />
-      <Plot data={data.deaths} title={'Deaths'} />
+      <Plot data={data.cases} title={'Cases'} chartColor={theme.chartOrange} />
+      <Plot data={data.recovered} title={'Recovered'} chartColor={theme.chartGreen} />
+      <Plot data={data.deaths} title={'Deaths'} chartColor={theme.chartRed} />
     </ScrollView>
   );
 };

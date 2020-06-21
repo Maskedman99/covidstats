@@ -1,4 +1,4 @@
-export const historicalToHeatMapData = historicalData => {
+export const toPlotDataFormat = historicalData => {
   let x = [];
   let y = [];
 

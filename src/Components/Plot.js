@@ -3,12 +3,11 @@ import {View, Dimensions, StyleSheet} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 
 import {ThemedText} from './Common';
-import chartConfig from '../Logic/chartConfig';
 
-import {historicalToHeatMapData, labelIndicesToHide} from '../Logic/fixHeatMapData';
+import {toPlotDataFormat, labelIndicesToHide} from '../Logic/toPlotData';
 
-const Plot = ({data, title}) => {
-  const parsedData = historicalToHeatMapData(data);
+const Plot = ({data, title, chartColor}) => {
+  const parsedData = toPlotDataFormat(data);
 
   let dailyLabels = [];
   let dailyCounts = [];
@@ -37,6 +36,15 @@ const Plot = ({data, title}) => {
 
   const hideXIndices = labelIndicesToHide(dailyLabels.length);
   const plotWidth = Dimensions.get('window').width;
+
+  const chartConfig = {
+    backgroundGradientFrom: 'white',
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: 'black',
+    backgroundGradientToOpacity: 0,
+    color: () => chartColor,
+    strokeWidth: 1.5
+  };
 
   return (
     <View>
