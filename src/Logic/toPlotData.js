@@ -2,7 +2,7 @@ export const toPlotDataFormat = historicalData => {
   let x = [];
   let y = [];
 
-  let temp = 555;
+  let temp = 0;
   Object.entries(historicalData).map(obj => {
     x.push({date: fixDate(obj[0]), count: obj[1]});
     y.push({date: fixDate(obj[0]), count: obj[1] - temp});

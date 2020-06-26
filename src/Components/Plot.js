@@ -6,7 +6,7 @@ import {ThemedText} from './Common';
 
 import {toPlotDataFormat, labelIndicesToHide} from '../Logic/toPlotData';
 
-const Plot = ({data, title, chartColor}) => {
+const Plot = ({data, title, chartColor, from, to}) => {
   const parsedData = toPlotDataFormat(data);
 
   let dailyLabels = [];
@@ -25,13 +25,13 @@ const Plot = ({data, title, chartColor}) => {
   });
 
   const dailyPlotData = {
-    labels: dailyLabels,
-    datasets: [{data: dailyCounts}]
+    labels: dailyLabels.slice(from, to),
+    datasets: [{data: dailyCounts.slice(from, to)}]
   };
 
   const cumilativePlotData = {
-    labels: cumilativeLabels,
-    datasets: [{data: cumilativeCounts}]
+    labels: cumilativeLabels.slice(from, to),
+    datasets: [{data: cumilativeCounts.slice(from, to)}]
   };
 
   const hideXIndices = labelIndicesToHide(dailyLabels.length);

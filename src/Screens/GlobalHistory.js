@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect, memo} from 'react';
 import {ScrollView, StyleSheet, RefreshControl, View} from 'react-native';
 import axios from 'axios';
+import dayjs from 'dayjs';
 
 import {ThemeContext} from '../Context/themes';
 
@@ -39,6 +40,9 @@ const GlobalHistory = () => {
     getAxios();
   }, []);
 
+  let range = dayjs(endDate).diff(startDate, 'day') + 1;
+  let offset = dayjs(1577817000000).diff(startDate, 'day');
+
   return isLoading ? (
     <Spinner />
   ) : (
@@ -60,16 +64,29 @@ const GlobalHistory = () => {
           minDate={1577817000000}
           maxDate={Date.now()}
         />
-        <DatePicker
-          date={endDate}
-          setDate={setEndDate}
-          minDate={1577817000000}
-          maxDate={Date.now()}
-        />
+        <DatePicker date={endDate} setDate={setEndDate} minDate={startDate} maxDate={Date.now()} />
       </View>
-      <Plot data={data.cases} title={'Cases'} chartColor={theme.chartOrange} />
-      <Plot data={data.recovered} title={'Recovered'} chartColor={theme.chartGreen} />
-      <Plot data={data.deaths} title={'Deaths'} chartColor={theme.chartRed} />
+      <Plot
+        data={data.cases}
+        title={'Cases'}
+        chartColor={theme.chartOrange}
+        from={offset}
+        to={range}
+      />
+      <Plot
+        data={data.recovered}
+        title={'Recovered'}
+        chartColor={theme.chartGreen}
+        from={offset}
+        to={range}
+      />
+      <Plot
+        data={data.deaths}
+        title={'Deaths'}
+        chartColor={theme.chartRed}
+        from={offset}
+        to={range}
+      />
     </ScrollView>
   );
 };
