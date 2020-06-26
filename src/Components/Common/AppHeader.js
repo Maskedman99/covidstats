@@ -6,7 +6,8 @@ import {useNavigation} from '@react-navigation/native';
 import {ThemeContext} from '../../Context/themes';
 
 import {ThemedText} from '.';
-import menuIcon from '../../Assets/menuPath.json';
+import menu from '../../Assets/Icons/Menu.json';
+import analytics from '../../Assets/Icons/Analytics.json';
 
 const AppHeader = ({title, style, onFlag}) => {
   const {theme} = useContext(ThemeContext);
@@ -15,13 +16,18 @@ const AppHeader = ({title, style, onFlag}) => {
   return (
     <View style={[styles.headerContainer, style]}>
       <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
-        <Svg height="30px" width="30px" viewBox="0 0 24 24" fill={theme.foreground}>
-          <Path d={menuIcon.path} />
+        <Svg height="30px" width="30px" viewBox={menu.viewBox} fill={theme.foreground}>
+          <Path d={menu.path} />
         </Svg>
       </TouchableHighlight>
       <View style={styles.innerContainer}>
         <ThemedText style={[styles.header, onFlag && styles.headerShadow]}>{title}</ThemedText>
       </View>
+      <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
+        <Svg height="30px" width="30px" viewBox={analytics.viewBox} fill={theme.foreground}>
+          <Path d={analytics.path} />
+        </Svg>
+      </TouchableHighlight>
     </View>
   );
 };
