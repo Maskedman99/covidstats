@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Dimensions, StyleSheet} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Plot;
+export default memo(Plot);
