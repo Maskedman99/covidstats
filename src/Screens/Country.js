@@ -7,12 +7,11 @@ var relativeTime = require('dayjs/plugin/relativeTime');
 import {ThemeContext} from '../Context/themes';
 
 import Spinner from '../Components/Spinner';
-import Global from '../Components/TotalCard';
+import TotalCard from '../Components/TotalCard';
 import TodayDetails from '../Components/TodayDetails';
 import {ThemedText, AppHeader, FlagImage} from '../Components/Common';
 
 import apiList from '../Assets/apiList.json';
-import TotalCard from '../Components/TotalCard';
 
 const Country = ({route}) => {
   const country = route.params.country;

@@ -23,7 +23,7 @@ const AppHeader = ({title, style, onFlag}) => {
       <View style={styles.innerContainer}>
         <ThemedText style={[styles.header, onFlag && styles.headerShadow]}>{title}</ThemedText>
       </View>
-      <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
+      <TouchableHighlight onPress={() => navigation.jumpTo('Global History')}>
         <Svg height="30px" width="30px" viewBox={analytics.viewBox} fill={theme.foreground}>
           <Path d={analytics.path} />
         </Svg>
