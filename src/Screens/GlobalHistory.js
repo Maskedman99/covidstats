@@ -17,7 +17,7 @@ const GlobalHistory = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
-  const [startDate, setStartDate] = useState(1577817000000);
+  const [startDate, setStartDate] = useState(1579631400000);
   const [endDate, setEndDate] = useState(Date.now());
 
   const fetchData = async () => {
@@ -41,7 +41,7 @@ const GlobalHistory = () => {
   }, []);
 
   let range = dayjs(endDate).diff(startDate, 'day') + 1;
-  let offset = dayjs(1577817000000).diff(startDate, 'day');
+  let offset = dayjs(1579631400000).diff(startDate, 'day');
 
   return isLoading ? (
     <Spinner />
@@ -61,7 +61,7 @@ const GlobalHistory = () => {
         <DatePicker
           date={startDate}
           setDate={setStartDate}
-          minDate={1577817000000}
+          minDate={1579631400000}
           maxDate={Date.now()}
         />
         <DatePicker date={endDate} setDate={setEndDate} minDate={startDate} maxDate={Date.now()} />

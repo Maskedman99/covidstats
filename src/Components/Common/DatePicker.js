@@ -16,7 +16,7 @@ const DatePicker = ({date, setDate, minDate, maxDate}) => {
   return (
     <>
       <TouchableHighlight onPress={() => setShowDateTimePicker(true)}>
-        <ThemedText>{dayjs(date).format('DD/MM/YYYY')}</ThemedText>
+        <ThemedText>{dayjs(date).format('DD MMM YYYY')}</ThemedText>
       </TouchableHighlight>
       {showDateTimePicker && (
         <DateTimePicker
