@@ -18,12 +18,16 @@ const fixDate = badDate => {
 };
 
 export const labelIndicesToHide = labelsCount => {
+  if (labelsCount < 10) {
+    return [];
+  }
+
   let hideXLabels = [...Array(labelsCount).keys()];
   hideXLabels.splice(Math.floor(labelsCount / 4), 1);
   hideXLabels.splice(Math.floor(labelsCount / 2), 1);
   hideXLabels.splice(Math.floor((3 * labelsCount) / 4), 1);
   hideXLabels.splice(0, 1);
-  hideXLabels.splice(labelsCount - 5, 1);
+  hideXLabels.splice(labelsCount - 1, 1);
 
   return hideXLabels;
 };

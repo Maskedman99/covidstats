@@ -34,7 +34,7 @@ const Plot = ({data, title, chartColor, from, to}) => {
     datasets: [{data: cumilativeCounts.slice(from, to)}]
   };
 
-  const hideXIndices = labelIndicesToHide(dailyLabels.length);
+  const hideXIndices = labelIndicesToHide(to - from);
   const plotWidth = Dimensions.get('window').width;
 
   const chartConfig = {
@@ -53,6 +53,7 @@ const Plot = ({data, title, chartColor, from, to}) => {
         data={dailyPlotData}
         width={plotWidth}
         height={250}
+        fromZero
         withDots={false}
         withShadow={false}
         withInnerLines={false}

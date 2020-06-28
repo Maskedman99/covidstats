@@ -41,7 +41,7 @@ const GlobalHistory = () => {
   }, []);
 
   let range = dayjs(endDate).diff(startDate, 'day') + 1;
-  let offset = dayjs(1579631400000).diff(startDate, 'day');
+  let offset = dayjs(startDate).diff(1579631400000, 'day');
 
   return isLoading ? (
     <Spinner />
@@ -62,7 +62,7 @@ const GlobalHistory = () => {
           date={startDate}
           setDate={setStartDate}
           minDate={1579631400000}
-          maxDate={Date.now()}
+          maxDate={endDate}
         />
         <DatePicker date={endDate} setDate={setEndDate} minDate={startDate} maxDate={Date.now()} />
       </View>
