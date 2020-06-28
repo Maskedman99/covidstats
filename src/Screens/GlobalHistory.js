@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect, memo} from 'react';
-import {ScrollView, StyleSheet, RefreshControl, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import axios from 'axios';
 import dayjs from 'dayjs';
 
@@ -17,7 +17,6 @@ const GlobalHistory = () => {
   const yesterday = Date.parse(dayjs().add(-1, 'day'));
 
   const [isLoading, setIsLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
   const [startDate, setStartDate] = useState(1579631400000);
   const [endDate, setEndDate] = useState(yesterday);
@@ -25,12 +24,6 @@ const GlobalHistory = () => {
   const fetchData = async () => {
     const response = await axios.get(`${apiList.globalHistorical}`);
     setData(response.data);
-  };
-
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await fetchData();
-    setRefreshing(false);
   };
 
   useEffect(() => {
@@ -48,16 +41,7 @@ const GlobalHistory = () => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <ScrollView
-      style={[styles.container, {backgroundColor: theme.background}]}
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          colors={[theme.foreground]}
-          progressBackgroundColor={theme.card}
-        />
-      }>
+    <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
       <ThemedText style={styles.header}>Global</ThemedText>
       <View style={styles.datesContainer}>
         <DatePicker
