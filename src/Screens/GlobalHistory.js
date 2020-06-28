@@ -14,11 +14,13 @@ import apiList from '../Assets/apiList.json';
 const GlobalHistory = () => {
   const {theme} = useContext(ThemeContext);
 
+  const yesterday = Date.parse(dayjs().add(-1, 'day'));
+
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
   const [startDate, setStartDate] = useState(1579631400000);
-  const [endDate, setEndDate] = useState(Date.now());
+  const [endDate, setEndDate] = useState(yesterday);
 
   const fetchData = async () => {
     const response = await axios.get(`${apiList.globalHistorical}`);
@@ -64,7 +66,7 @@ const GlobalHistory = () => {
           minDate={1579631400000}
           maxDate={endDate}
         />
-        <DatePicker date={endDate} setDate={setEndDate} minDate={startDate} maxDate={Date.now()} />
+        <DatePicker date={endDate} setDate={setEndDate} minDate={startDate} maxDate={yesterday} />
       </View>
       <Plot
         data={data.cases}

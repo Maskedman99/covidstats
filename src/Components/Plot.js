@@ -1,12 +1,14 @@
 import React, {memo} from 'react';
 import {View, Dimensions, StyleSheet} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
+import dayjs from 'dayjs';
+const customParseFormat = require('dayjs/plugin/customParseFormat');
 
 import {ThemedText} from './Common';
-
 import {toPlotDataFormat, labelIndicesToHide} from '../Logic/toPlotData';
 
 const Plot = ({data, title, chartColor, from, to}) => {
+  dayjs.extend(customParseFormat);
   const parsedData = toPlotDataFormat(data);
 
   let dailyLabels = [];
@@ -54,15 +56,16 @@ const Plot = ({data, title, chartColor, from, to}) => {
         width={plotWidth}
         height={250}
         fromZero
+        withVerticalLabels
         withDots={false}
         withShadow={false}
         withInnerLines={false}
-        withVerticalLabels={true}
         formatYLabel={y => y.slice(0, -3)}
-        formatXLabel={x => x.slice(0, -3)}
+        formatXLabel={x => dayjs(x, 'M/D/YY').format('MMM DD')}
         hidePointsAtIndex={hideXIndices}
+        verticalLabelRotation={270}
         yLabelsOffset={4}
-        xLabelsOffset={2}
+        xLabelsOffset={20}
         style={styles.lineChart}
         chartConfig={chartConfig}
       />
@@ -71,15 +74,16 @@ const Plot = ({data, title, chartColor, from, to}) => {
         data={cumilativePlotData}
         width={plotWidth}
         height={250}
+        withVerticalLabels
         withDots={false}
         withShadow={false}
         withInnerLines={false}
-        withVerticalLabels={true}
         formatYLabel={y => y.slice(0, -3)}
-        formatXLabel={x => x.slice(0, -3)}
+        formatXLabel={x => dayjs(x, 'M/D/YY').format('MMM DD')}
         hidePointsAtIndex={hideXIndices}
+        verticalLabelRotation={270}
         yLabelsOffset={4}
-        xLabelsOffset={2}
+        xLabelsOffset={20}
         style={styles.lineChart}
         chartConfig={chartConfig}
       />
@@ -94,7 +98,8 @@ const styles = StyleSheet.create({
   todayHeader: {
     textAlign: 'center',
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    paddingTop: 8
   }
 });
 
