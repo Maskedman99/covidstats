@@ -59,7 +59,7 @@ const Plot = ({data, title, chartColor, from, to}) => {
         withInnerLines={false}
         withVerticalLabels={true}
         formatYLabel={y => y.slice(0, -3)}
-        formatXLabel={x => x.slice(5, 10)}
+        formatXLabel={x => x.slice(0, -3)}
         hidePointsAtIndex={hideXIndices}
         yLabelsOffset={4}
         xLabelsOffset={2}
@@ -76,7 +76,7 @@ const Plot = ({data, title, chartColor, from, to}) => {
         withInnerLines={false}
         withVerticalLabels={true}
         formatYLabel={y => y.slice(0, -3)}
-        formatXLabel={x => x.slice(5, 10)}
+        formatXLabel={x => x.slice(0, -3)}
         hidePointsAtIndex={hideXIndices}
         yLabelsOffset={4}
         xLabelsOffset={2}

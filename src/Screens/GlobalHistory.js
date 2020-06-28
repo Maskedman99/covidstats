@@ -40,8 +40,8 @@ const GlobalHistory = () => {
     getAxios();
   }, []);
 
-  let range = dayjs(endDate).diff(startDate, 'day') + 1;
   let offset = dayjs(startDate).diff(1579631400000, 'day');
+  let range = dayjs(endDate).diff(startDate, 'day') + 1 + offset;
 
   return isLoading ? (
     <Spinner />
