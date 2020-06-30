@@ -32,8 +32,8 @@ const DrawerContent = ({navigation}) => {
         <View>
           <TouchableHighlight
             onPress={() => {
+              navigation.navigate('Home', {screen: 'Global'});
               changeCountry(null);
-              navigation.navigate('Home');
             }}
             style={styles.innerContainer}>
             <ThemedText>Home</ThemedText>

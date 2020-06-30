@@ -13,8 +13,8 @@ const LabelCountry = ({country, navigation, changeCountry}) => {
     <TouchableOpacity
       style={styles.container}
       onPress={() => {
+        navigation.navigate('CountryHome', {screen: 'Country'});
         changeCountry(country);
-        navigation.navigate('CountryHome');
       }}>
       <ThemedText style={styles.country}>{country.Country}</ThemedText>
     </TouchableOpacity>

@@ -24,8 +24,8 @@ const Country = () => {
 
   dayjs.extend(relativeTime);
 
-  const fetchData = async () => {
-    const response = await axios.get(`${apiList.countries}/${selectedCountry.ISO2}`);
+  const fetchData = async ISO2 => {
+    const response = await axios.get(`${apiList.countries}/${ISO2}`);
     setData(response.data);
   };
 
@@ -38,14 +38,14 @@ const Country = () => {
   useEffect(() => {
     setIsLoading(true);
     const getAxios = async () => {
-      await fetchData();
+      await fetchData(selectedCountry.ISO2);
       setIsLoading(false);
     };
 
     getAxios();
   }, [selectedCountry]);
 
-  return isLoading ? (
+  return isLoading || selectedCountry === null ? (
     <Spinner />
   ) : (
     <ScrollView

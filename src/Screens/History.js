@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, memo} from 'react';
+import React, {useContext, useState, useEffect, useCallback, memo} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import axios from 'axios';
 import dayjs from 'dayjs';
@@ -12,7 +12,7 @@ import Plot from '../Components/Plot';
 
 import apiList from '../Assets/apiList.json';
 
-const GlobalHistory = () => {
+const History = () => {
   const {theme} = useContext(ThemeContext);
   const {selectedCountry} = useContext(CountryContext);
 
@@ -24,24 +24,24 @@ const GlobalHistory = () => {
   const [endDate, setEndDate] = useState(yesterday);
 
   const fetchData = async () => {
-    const response = await axios.get(
-      `${
-        selectedCountry === null
-          ? apiList.historical.replace(':query', 'all')
-          : apiList.historical.replace(':query', selectedCountry.ISO2)
-      }`
-    );
-    setData(selectedCountry === null ? response.data : response.data.timeline);
+    const response = await axios.get(`${apiList.historical.replace(':query', 'all')}`);
+    setData(response.data);
+  };
+
+  const fetchCountryData = async ISO2 => {
+    const response = await axios.get(`${apiList.historical.replace(':query', ISO2)}`);
+    setData(response.data.timeline);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const getAxios = async () => {
-      await fetchData();
+      selectedCountry === null ? await fetchData() : await fetchCountryData(selectedCountry.ISO2);
       setIsLoading(false);
     };
 
     getAxios();
-  }, []);
+  }, [selectedCountry]);
 
   let offset = dayjs(startDate).diff(1579631400000, 'day');
   let range = dayjs(endDate).diff(startDate, 'day') + 1 + offset;
@@ -50,7 +50,9 @@ const GlobalHistory = () => {
     <Spinner />
   ) : (
     <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
-      <ThemedText style={styles.header}>Global</ThemedText>
+      <ThemedText style={styles.header}>{`${
+        selectedCountry === null ? 'Global' : selectedCountry.Country
+      }`}</ThemedText>
       <View style={styles.datesContainer}>
         <DatePicker
           date={startDate}
@@ -104,4 +106,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default memo(GlobalHistory);
+export default memo(History);
