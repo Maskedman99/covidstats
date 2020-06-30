@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, useCallback, memo} from 'react';
+import React, {useContext, useState, useEffect, memo} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import axios from 'axios';
 import dayjs from 'dayjs';

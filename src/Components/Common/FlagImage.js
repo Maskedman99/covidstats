@@ -8,7 +8,7 @@ const FlagImage = ({iso2}) => {
       <SvgUri
         style={styles.image}
         preserveAspectRatio="none"
-        uri={`https://raw.githubusercontent.com/hjnilsson/country-flags/master/svg/${iso2.toLowerCase()}.svg`}
+        uri={`https://raw.githubusercontent.com/Maskedman99/country-flags/master/svg/${iso2.toLowerCase()}.svg`}
       />
     </View>
   );
