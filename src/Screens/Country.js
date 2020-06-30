@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 var relativeTime = require('dayjs/plugin/relativeTime');
 
 import {ThemeContext} from '../Context/themes';
+import {CountryContext} from '../Context/countries';
 
 import Spinner from '../Components/Spinner';
 import TotalCard from '../Components/TotalCard';
@@ -13,10 +14,9 @@ import {ThemedText, AppHeader, FlagImage} from '../Components/Common';
 
 import apiList from '../Assets/apiList.json';
 
-const Country = ({route}) => {
-  const country = route.params.country;
-
+const Country = () => {
   const {theme} = useContext(ThemeContext);
+  const {selectedCountry} = useContext(CountryContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -25,7 +25,7 @@ const Country = ({route}) => {
   dayjs.extend(relativeTime);
 
   const fetchData = async () => {
-    const response = await axios.get(`${apiList.countries}/${country.ISO2}`);
+    const response = await axios.get(`${apiList.countries}/${selectedCountry.ISO2}`);
     setData(response.data);
   };
 
@@ -43,8 +43,7 @@ const Country = ({route}) => {
     };
 
     getAxios();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [country]);
+  }, [selectedCountry]);
 
   return isLoading ? (
     <Spinner />
@@ -59,8 +58,8 @@ const Country = ({route}) => {
           progressBackgroundColor={theme.card}
         />
       }>
-      <AppHeader title={country.Country} style={styles.appHeader} onFlag={true} />
-      <FlagImage iso2={country.ISO2} />
+      <AppHeader title={selectedCountry.Country} style={styles.appHeader} onFlag={true} />
+      <FlagImage iso2={selectedCountry.ISO2} />
 
       <TotalCard data={data} />
       <ThemedText style={styles.todayHeader}>Today</ThemedText>

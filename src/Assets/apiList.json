@@ -1,5 +1,5 @@
 {
   "global": "https://corona.lmao.ninja/v2/all",
   "countries": "https://corona.lmao.ninja/v2/countries",
-  "globalHistorical": "https://corona.lmao.ninja/v2/historical/all?lastdays=all"
+  "historical": "https://corona.lmao.ninja/v2/historical/:query?lastdays=all"
 }

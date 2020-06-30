@@ -1,12 +1,15 @@
-import React, {memo, useState, useEffect} from 'react';
+import React, {memo, useState, useEffect, useContext} from 'react';
 import {View, StyleSheet, Keyboard} from 'react-native';
+
+import {CountryContext} from '../Context/countries';
 
 import ColorPalette from './ColorPalette';
 import {ThemedText, Divider} from './Common';
 import SearchCountry from '../Components/SearchCountry';
 import {TouchableHighlight} from 'react-native-gesture-handler';
 
-const DrawerContent = props => {
+const DrawerContent = ({navigation}) => {
+  const {changeCountry} = useContext(CountryContext);
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   useEffect(() => {
@@ -28,19 +31,22 @@ const DrawerContent = props => {
       {!isKeyboardOpen && (
         <View>
           <TouchableHighlight
-            onPress={() => props.navigation.navigate('Home')}
+            onPress={() => {
+              changeCountry(null);
+              navigation.navigate('Home');
+            }}
             style={styles.innerContainer}>
             <ThemedText>Home</ThemedText>
           </TouchableHighlight>
           <TouchableHighlight
-            onPress={() => props.navigation.navigate('About')}
+            onPress={() => navigation.navigate('About')}
             style={styles.innerContainer}>
             <ThemedText>About</ThemedText>
           </TouchableHighlight>
           <Divider />
         </View>
       )}
-      <SearchCountry navigation={props.navigation} />
+      <SearchCountry navigation={navigation} />
       <Divider />
 
       {!isKeyboardOpen && (

@@ -1,7 +1,10 @@
 export const toPlotDataFormat = historicalData => {
+  if (historicalData === undefined) {
+    return {cumilative: [], daily: []};
+  }
+
   let x = [];
   let y = [];
-
   let temp = 0;
   Object.entries(historicalData).map(obj => {
     x.push({date: obj[0], count: obj[1]});

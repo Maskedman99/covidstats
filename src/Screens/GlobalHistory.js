@@ -4,6 +4,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 
 import {ThemeContext} from '../Context/themes';
+import {CountryContext} from '../Context/countries';
 
 import {ThemedText, DatePicker} from '../Components/Common';
 import Spinner from '../Components/Spinner';
@@ -13,6 +14,7 @@ import apiList from '../Assets/apiList.json';
 
 const GlobalHistory = () => {
   const {theme} = useContext(ThemeContext);
+  const {selectedCountry} = useContext(CountryContext);
 
   const yesterday = Date.parse(dayjs().add(-1, 'day'));
 
@@ -22,8 +24,14 @@ const GlobalHistory = () => {
   const [endDate, setEndDate] = useState(yesterday);
 
   const fetchData = async () => {
-    const response = await axios.get(`${apiList.globalHistorical}`);
-    setData(response.data);
+    const response = await axios.get(
+      `${
+        selectedCountry === null
+          ? apiList.historical.replace(':query', 'all')
+          : apiList.historical.replace(':query', selectedCountry.ISO2)
+      }`
+    );
+    setData(selectedCountry === null ? response.data : response.data.timeline);
   };
 
   useEffect(() => {
