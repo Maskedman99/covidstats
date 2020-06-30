@@ -8,7 +8,7 @@ export const toPlotDataFormat = historicalData => {
   let temp = 0;
   Object.entries(historicalData).map(obj => {
     x.push({date: obj[0], count: obj[1]});
-    y.push({date: obj[0], count: obj[1] - temp});
+    y.push({date: obj[0], count: Math.max(obj[1] - temp, 0)});
     temp = obj[1];
   });
 
