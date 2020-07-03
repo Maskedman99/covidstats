@@ -1,5 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {StatusBar} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -20,19 +21,32 @@ const App = () => {
   const [Theme, setTheme] = useState(theme);
   const [Country, setCountry] = useState(selectedCountry);
 
-  const changeTheme = value => {
+  useEffect(() => {
+    const getStoredTheme = async () => {
+      const x = await AsyncStorage.getItem('@storedTheme');
+      changeTheme(x || 'blue');
+    };
+
+    getStoredTheme();
+  }, []);
+
+  const changeTheme = async value => {
     switch (value) {
       case 'blue':
         setTheme(themes.blue);
+        await AsyncStorage.setItem('@storedTheme', 'blue');
         break;
       case 'grey':
         setTheme(themes.grey);
+        await AsyncStorage.setItem('@storedTheme', 'grey');
         break;
       case 'light':
         setTheme(themes.light);
+        await AsyncStorage.setItem('@storedTheme', 'light');
         break;
       default:
         setTheme(themes.dark);
+        await AsyncStorage.setItem('@storedTheme', 'dark');
     }
   };
 
