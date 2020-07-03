@@ -58,7 +58,7 @@ const Country = () => {
           progressBackgroundColor={theme.card}
         />
       }>
-      <AppHeader title={selectedCountry.Country} style={styles.appHeader} onFlag={true} />
+      <AppHeader title={selectedCountry.Country} onFlag showMenuIcon showStatsIcon />
       <FlagImage iso2={selectedCountry.ISO2} />
 
       <TotalCard data={data} />
@@ -86,9 +86,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold'
-  },
-  appHeader: {
-    zIndex: 3
   }
 });
 

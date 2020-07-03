@@ -59,7 +59,7 @@ const Global = () => {
           progressBackgroundColor={theme.card}
         />
       }>
-      <AppHeader title={'Covid-19 Global Data'} onFlag={false} />
+      <AppHeader title={'Covid-19 Global Data'} onFlag={false} showMenuIcon showStatsIcon />
 
       <TotalCard data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />

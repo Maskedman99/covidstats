@@ -5,29 +5,33 @@ import {useNavigation} from '@react-navigation/native';
 
 import {ThemeContext} from '../../Context/themes';
 
-import {ThemedText} from '.';
+import ThemedText from './ThemedText';
 import menu from '../../Assets/Icons/Menu.json';
 import analytics from '../../Assets/Icons/Analytics.json';
 
-const AppHeader = ({title, style, onFlag}) => {
+const AppHeader = ({title, onFlag, showMenuIcon, showStatsIcon}) => {
   const {theme} = useContext(ThemeContext);
   const navigation = useNavigation();
 
   return (
-    <View style={[styles.headerContainer, style]}>
-      <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
-        <Svg height="30px" width="30px" viewBox={menu.viewBox} fill={theme.foreground}>
-          <Path d={menu.path} />
-        </Svg>
-      </TouchableHighlight>
+    <View style={styles.headerContainer}>
+      {showMenuIcon && (
+        <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
+          <Svg height="30px" width="30px" viewBox={menu.viewBox} fill={theme.foreground}>
+            <Path d={menu.path} />
+          </Svg>
+        </TouchableHighlight>
+      )}
       <View style={styles.innerContainer}>
         <ThemedText style={[styles.header, onFlag && styles.headerShadow]}>{title}</ThemedText>
       </View>
-      <TouchableHighlight onPress={() => navigation.jumpTo('History')}>
-        <Svg height="30px" width="30px" viewBox={analytics.viewBox} fill={theme.foreground}>
-          <Path d={analytics.path} />
-        </Svg>
-      </TouchableHighlight>
+      {showStatsIcon && (
+        <TouchableHighlight onPress={() => navigation.jumpTo('History')}>
+          <Svg height="30px" width="30px" viewBox={analytics.viewBox} fill={theme.foreground}>
+            <Path d={analytics.path} />
+          </Svg>
+        </TouchableHighlight>
+      )}
     </View>
   );
 };
@@ -37,7 +41,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 16,
     alignItems: 'center',
-    paddingTop: 32
+    paddingTop: 32,
+    zIndex: 1
   },
   innerContainer: {
     flex: 1
