@@ -1,31 +1,35 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
+
+import {ThemeContext} from '../Context/themes';
 
 import {TitleDataCard} from './Common';
 import {formatNumber} from '../Logic/misc';
 
 const TotalDetails = ({data}) => {
+  const {theme} = useContext(ThemeContext);
+
   const pieData = [
     {
       name: 'Active',
       value: data.active,
-      color: 'orange',
-      legendFontColor: '#7F7F7F',
+      color: theme.chartOrange,
+      legendFontColor: theme.foreground,
       legendFontSize: 15
     },
     {
       name: 'Recovered',
       value: data.recovered,
-      color: 'green',
-      legendFontColor: '#7F7F7F',
+      color: theme.chartGreen,
+      legendFontColor: theme.foreground,
       legendFontSize: 15
     },
     {
       name: 'Deaths',
       value: data.deaths,
-      color: 'red',
-      legendFontColor: '#7F7F7F',
+      color: theme.chartRed,
+      legendFontColor: theme.foreground,
       legendFontSize: 15
     }
   ];

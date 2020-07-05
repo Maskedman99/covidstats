@@ -17,7 +17,7 @@ export const themes = {
     background: '#212D3B',
     divider: 'hsla(0, 0%, 100%, 0.28)',
     statusBar: 'light-content',
-    chartGreen: 'rgba(0, 255, 0, 1)',
+    chartGreen: 'rgba(0, 187, 0, 1)',
     chartRed: 'rgba(255, 0, 0, 1)',
     chartOrange: 'rgba(255, 152, 0, 1)'
   },
@@ -27,7 +27,7 @@ export const themes = {
     background: '#121212',
     divider: 'hsla(0, 0%, 100%, 0.28)',
     statusBar: 'light-content',
-    chartGreen: 'rgba(0, 255, 0, 1)',
+    chartGreen: 'rgba(0, 187, 0, 1)',
     chartRed: 'rgba(255, 0, 0, 1)',
     chartOrange: 'rgba(255, 152, 0, 1)'
   },
@@ -37,7 +37,7 @@ export const themes = {
     background: '#000000',
     divider: 'hsla(0, 0%, 100%, 0.28)',
     statusBar: 'light-content',
-    chartGreen: 'rgba(0, 255, 0, 1)',
+    chartGreen: 'rgba(0, 187, 0, 1)',
     chartRed: 'rgba(255, 0, 0, 1)',
     chartOrange: 'rgba(255, 152, 0, 1)'
   }
