@@ -63,7 +63,6 @@ const Global = () => {
 
       <TotalCard data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />
-      <ThemedText style={styles.todayHeader}>Today</ThemedText>
       <TodayDetails
         deaths={globalData.todayDeaths}
         recovered={globalData.todayRecovered}
@@ -82,11 +81,6 @@ const styles = StyleSheet.create({
   },
   update: {
     textAlign: 'center'
-  },
-  todayHeader: {
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold'
   }
 });
 

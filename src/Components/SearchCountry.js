@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 8,
     marginHorizontal: 4
   },
   flatlist: {

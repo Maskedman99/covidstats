@@ -22,9 +22,9 @@ export const themes = {
     chartOrange: 'rgba(255, 152, 0, 1)'
   },
   grey: {
-    card: '#253446',
+    card: '#1d1d1d',
     foreground: '#ffffff',
-    background: '#222222',
+    background: '#121212',
     divider: 'hsla(0, 0%, 100%, 0.28)',
     statusBar: 'light-content',
     chartGreen: 'rgba(0, 255, 0, 1)',
@@ -32,7 +32,7 @@ export const themes = {
     chartOrange: 'rgba(255, 152, 0, 1)'
   },
   dark: {
-    card: '#253446',
+    card: '#1b1b1b',
     foreground: '#ffffff',
     background: '#000000',
     divider: 'hsla(0, 0%, 100%, 0.28)',

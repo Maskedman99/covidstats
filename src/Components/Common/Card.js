@@ -24,11 +24,11 @@ const Card = ({children, style}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 8,
-    padding: 8,
+    margin: 4,
+    padding: 16,
     justifyContent: 'center',
     borderWidth: 1,
-    borderRadius: 16,
+    borderRadius: 8,
     elevation: 4
   }
 });

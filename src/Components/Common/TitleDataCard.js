@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {StyleSheet} from 'react-native';
 
 import {ThemedText, Card} from '.';
@@ -14,14 +14,14 @@ const TitleDataCard = ({title, data}) => {
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    paddingBottom: 4
+    fontSize: 14,
+    paddingBottom: 8
   },
   data: {
     textAlign: 'center',
-    fontSize: 15
+    fontWeight: '600',
+    fontSize: 24
   }
 });
 
-export default TitleDataCard;
+export default memo(TitleDataCard);

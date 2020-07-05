@@ -62,7 +62,6 @@ const Country = () => {
       <FlagImage iso2={selectedCountry.ISO2} />
 
       <TotalCard data={data} />
-      <ThemedText style={styles.todayHeader}>Today</ThemedText>
       <TodayDetails
         deaths={data.todayDeaths}
         recovered={data.todayRecovered}
@@ -81,11 +80,6 @@ const styles = StyleSheet.create({
   },
   update: {
     textAlign: 'center'
-  },
-  todayHeader: {
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold'
   }
 });
 
