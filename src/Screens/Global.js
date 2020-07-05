@@ -7,12 +7,13 @@ var relativeTime = require('dayjs/plugin/relativeTime');
 import {ThemeContext} from '../Context/themes';
 
 import Spinner from '../Components/Spinner';
-import TotalCard from '../Components/TotalCard';
+import TotalCard from '../Components/TotalDetails';
 import CountriesCard from '../Components/CountriesCard';
 import TodayDetails from '../Components/TodayDetails';
 import {ThemedText, AppHeader} from '../Components/Common';
 
 import apiList from '../Assets/apiList.json';
+import TotalDetails from '../Components/TotalDetails';
 
 const Global = () => {
   const {theme} = useContext(ThemeContext);
@@ -61,13 +62,9 @@ const Global = () => {
       }>
       <AppHeader title={'Covid-19 Global Data'} onFlag={false} showMenuIcon showStatsIcon />
 
-      <TotalCard data={globalData} />
+      <TotalDetails data={globalData} />
       <CountriesCard topCountries={data.slice(0, 10)} />
-      <TodayDetails
-        deaths={globalData.todayDeaths}
-        recovered={globalData.todayRecovered}
-        confirmed={globalData.todayCases}
-      />
+      <TodayDetails data={globalData} />
       <ThemedText style={styles.update}>{`Data updated ${dayjs(
         globalData.updated
       ).fromNow()}. Pull down to refresh`}</ThemedText>

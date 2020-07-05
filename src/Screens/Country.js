@@ -8,7 +8,7 @@ import {ThemeContext} from '../Context/themes';
 import {CountryContext} from '../Context/countries';
 
 import Spinner from '../Components/Spinner';
-import TotalCard from '../Components/TotalCard';
+import TotalDetails from '../Components/TotalDetails';
 import TodayDetails from '../Components/TodayDetails';
 import {ThemedText, AppHeader, FlagImage} from '../Components/Common';
 
@@ -61,12 +61,8 @@ const Country = () => {
       <AppHeader title={selectedCountry.Country} onFlag showMenuIcon showStatsIcon />
       <FlagImage iso2={selectedCountry.ISO2} />
 
-      <TotalCard data={data} />
-      <TodayDetails
-        deaths={data.todayDeaths}
-        recovered={data.todayRecovered}
-        confirmed={data.todayCases}
-      />
+      <TotalDetails data={data} />
+      <TodayDetails data={data} />
       <ThemedText style={styles.update}>{`Data updated ${dayjs(
         data.updated
       ).fromNow()}. Pull down to refresh`}</ThemedText>

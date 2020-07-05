@@ -3,14 +3,16 @@ import {View, StyleSheet} from 'react-native';
 
 import {ThemedText, TitleDataCard} from './Common';
 
-const TodayDetails = ({confirmed, recovered, deaths}) => {
+import {formatNumber} from '../Logic/misc';
+
+const TodayDetails = ({data}) => {
   return (
     <>
       <ThemedText style={styles.todayHeader}>Today</ThemedText>
-      <TitleDataCard title={'Confirmed'} data={confirmed} />
+      <TitleDataCard title={'Confirmed'} data={formatNumber(data.todayCases)} />
       <View style={styles.container}>
-        <TitleDataCard title={'Recoverd'} data={recovered} />
-        <TitleDataCard title={'Deaths'} data={deaths} />
+        <TitleDataCard title={'Recoverd'} data={formatNumber(data.todayRecovered)} />
+        <TitleDataCard title={'Deaths'} data={formatNumber(data.todayDeaths)} />
       </View>
     </>
   );
