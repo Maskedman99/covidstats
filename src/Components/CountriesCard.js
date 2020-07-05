@@ -6,7 +6,7 @@ import {formatNumber, shortenCountryName} from '../Logic/misc';
 
 const CountriesCard = ({topCountries}) => {
   return (
-    <Card style={styles.cardContainer}>
+    <Card>
       <View style={styles.container}>
         <View>
           <ThemedText style={styles.header}>Country</ThemedText>
@@ -38,19 +38,17 @@ const CountriesCard = ({topCountries}) => {
 };
 
 const styles = StyleSheet.create({
-  cardContainer: {
-    width: '95%'
-  },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
   data: {
-    fontSize: 16
+    fontSize: 17,
+    fontWeight: '600'
   },
   header: {
-    fontSize: 17,
-    paddingVertical: 5
+    fontSize: 15,
+    paddingBottom: 8
   }
 });
 

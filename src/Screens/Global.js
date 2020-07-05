@@ -7,7 +7,6 @@ var relativeTime = require('dayjs/plugin/relativeTime');
 import {ThemeContext} from '../Context/themes';
 
 import Spinner from '../Components/Spinner';
-import TotalCard from '../Components/TotalDetails';
 import CountriesCard from '../Components/CountriesCard';
 import TodayDetails from '../Components/TodayDetails';
 import {ThemedText, AppHeader} from '../Components/Common';
