@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderRadius: 8,
-    elevation: 4
+    elevation: 2
   }
 });
 

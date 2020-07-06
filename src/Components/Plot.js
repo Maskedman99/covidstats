@@ -93,7 +93,7 @@ const Plot = ({data, title, chartColor, from, to}) => {
 
 const styles = StyleSheet.create({
   lineChart: {
-    marginLeft: -10
+    marginLeft: -4
   },
   todayHeader: {
     textAlign: 'center',
