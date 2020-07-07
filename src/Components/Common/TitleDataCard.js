@@ -1,7 +1,8 @@
 import React, {memo} from 'react';
 import {StyleSheet} from 'react-native';
 
-import {ThemedText, Card} from '.';
+import ThemedText from './ThemedText';
+import Card from './Card';
 
 const TitleDataCard = ({title, data}) => {
   return (
