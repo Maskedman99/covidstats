@@ -1,3 +1,7 @@
+<p align = "center">
+  <img alt="covidstats" src="src/Assets/Icons/CovidStatusIcon.png" width="300">
+</p>
+
 <h1 align = "center">Covid Stats</h1>
 
 ## Framework
