@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {StatusBar} from 'react-native';
+import RNBootSplash from 'react-native-bootsplash';
 import AsyncStorage from '@react-native-community/async-storage';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
@@ -25,6 +26,7 @@ const App = () => {
     const getStoredTheme = async () => {
       const x = await AsyncStorage.getItem('@storedTheme');
       changeTheme(x || 'blue');
+      RNBootSplash.hide();
     };
 
     getStoredTheme();
