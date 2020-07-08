@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     const getStoredTheme = async () => {
       const x = await AsyncStorage.getItem('@storedTheme');
-      changeTheme(x || 'blue');
+      await changeTheme(x || 'dark');
       RNBootSplash.hide();
     };
 

@@ -43,12 +43,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   data: {
-    fontSize: 17,
-    fontWeight: '600'
+    fontSize: 16,
+    fontVariant: ['small-caps']
   },
   header: {
-    fontSize: 15,
-    paddingBottom: 8
+    fontSize: 14,
+    paddingBottom: 8,
+    fontVariant: ['tabular-nums']
   }
 });
 

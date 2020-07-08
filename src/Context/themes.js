@@ -43,4 +43,4 @@ export const themes = {
   }
 };
 
-export const ThemeContext = React.createContext({theme: themes.blue, changeTheme: () => {}});
+export const ThemeContext = React.createContext({theme: themes.dark, changeTheme: () => {}});
