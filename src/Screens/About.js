@@ -13,13 +13,16 @@ const About = () => {
       <Divider style={styles.dividerStyle} />
       <ThemedText style={styles.header}>Source Code</ThemedText>
       <ThemedText>
-        This is an open source project and you can find the source code in the link below
+        This is an open source project. You can find the source code in the link below.
       </ThemedText>
-      <UrlText text={'View Source Code'} url={''} />
+      <UrlText text={'View Source Code'} url={'https://github.com/Maskedman99/covidstats'} />
       <Divider style={styles.dividerStyle} />
       <ThemedText style={styles.header}>License</ThemedText>
       <ThemedText>This project is licensed under GNU GPL version 3 or any later version</ThemedText>
-      <UrlText text={'View License'} url={''} />
+      <UrlText
+        text={'View License'}
+        url={'https://raw.githubusercontent.com/Maskedman99/covidstats/master/LICENSE'}
+      />
       <Divider style={styles.dividerStyle} />
       <ThemedText style={styles.header}>Credits</ThemedText>
       <ThemedText>maskedman</ThemedText>
