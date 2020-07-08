@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   todayHeader: {
     textAlign: 'center',
     fontSize: 20,
-    fontWeight: '300',
-    paddingTop: 12
+    paddingTop: 12,
+    fontVariant: ['small-caps']
   }
 });
 

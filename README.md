@@ -14,4 +14,4 @@ Read [CONTRIBUTING.md](/CONTRIBUTING.md)
 
 ## License
 
-This project is licensed under the terms of the [GNU GPLv3](/LICENSE).
+This project is licensed under the terms of the [GNU GPL version 3](/LICENSE) or any later version.
