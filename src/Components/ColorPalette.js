@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, TouchableHighlight} from 'react-native';
+import {View, StyleSheet, Pressable} from 'react-native';
 
 import {themes, ThemeContext} from '../Context/themes';
 
@@ -8,38 +8,38 @@ const ColorPalette = () => {
 
   return (
     <View style={styles.row}>
-      <TouchableHighlight onPress={() => changeTheme('light')} style={styles.palette}>
+      <Pressable onPress={() => changeTheme('light')} style={styles.palette}>
         <View
           style={[
             styles.palette,
             {backgroundColor: themes.light.background, borderColor: themes.light.foreground}
           ]}
         />
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => changeTheme('blue')} style={styles.palette}>
+      </Pressable>
+      <Pressable onPress={() => changeTheme('blue')} style={styles.palette}>
         <View
           style={[
             styles.palette,
             {backgroundColor: themes.blue.background, borderColor: themes.blue.foreground}
           ]}
         />
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => changeTheme('grey')} style={styles.palette}>
+      </Pressable>
+      <Pressable onPress={() => changeTheme('grey')} style={styles.palette}>
         <View
           style={[
             styles.palette,
             {backgroundColor: themes.grey.background, borderColor: themes.grey.foreground}
           ]}
         />
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => changeTheme('dark')} style={styles.palette}>
+      </Pressable>
+      <Pressable onPress={() => changeTheme('dark')} style={styles.palette}>
         <View
           style={[
             styles.palette,
             {backgroundColor: themes.dark.background, borderColor: themes.dark.foreground}
           ]}
         />
-      </TouchableHighlight>
+      </Pressable>
     </View>
   );
 };

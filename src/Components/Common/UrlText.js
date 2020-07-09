@@ -1,16 +1,18 @@
 import React from 'react';
-import {Linking, TouchableHighlight, StyleSheet} from 'react-native';
+import {Linking, Pressable, StyleSheet} from 'react-native';
 import ThemedText from './ThemedText';
 
 const UrlText = ({text, url}) => {
   return (
-    <TouchableHighlight
-      activeOpacity={0.5}
+    <Pressable
+      android_ripple
       onPress={() => {
         Linking.openURL(url);
       }}>
-      <ThemedText style={styles.textStyle}>{text}</ThemedText>
-    </TouchableHighlight>
+      {({pressed}) => (
+        <ThemedText style={pressed ? styles.textPressedStyle : styles.textStyle}>{text}</ThemedText>
+      )}
+    </Pressable>
   );
 };
 
@@ -19,6 +21,11 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     textDecorationLine: 'underline',
     textAlign: 'center'
+  },
+  textPressedStyle: {
+    textDecorationLine: 'underline',
+    textAlign: 'center',
+    fontWeight: 'bold'
   }
 });
 

@@ -66,7 +66,7 @@ const App = () => {
             drawerContent={props => <DrawerContent {...props} />}
             drawerContentOptions={{
               activeTintColor: Theme.foreground,
-              inactiveTintColor: Theme.foreground,
+              inactiveTintColor: Theme.background,
               activeBackgroundColor: 'white' //isn't working
               //inactiveBackgroundColor: 'black'
             }}

@@ -11,6 +11,9 @@ const About = () => {
     <ScrollView style={[styles.container, {backgroundColor: theme.background}]}>
       <AppHeader title="About" showMenuIcon />
       <Divider style={styles.dividerStyle} />
+      <ThemedText style={styles.header}>Version</ThemedText>
+      <ThemedText>v1.1</ThemedText>
+      <Divider style={styles.dividerStyle} />
       <ThemedText style={styles.header}>Source Code</ThemedText>
       <ThemedText>
         This is an open source project. You can find the source code in the link below.

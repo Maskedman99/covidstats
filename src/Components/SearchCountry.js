@@ -1,5 +1,5 @@
 import React, {useState, useContext, memo} from 'react';
-import {StyleSheet, TextInput, FlatList, TouchableOpacity} from 'react-native';
+import {StyleSheet, TextInput, FlatList, Pressable} from 'react-native';
 
 import {Divider, ThemedText} from '../Components/Common';
 
@@ -10,14 +10,14 @@ import countriesList from '../Assets/countriesList.json';
 
 const LabelCountry = ({country, navigation, changeCountry}) => {
   return (
-    <TouchableOpacity
+    <Pressable
       style={styles.container}
       onPress={() => {
         navigation.navigate('CountryHome', {screen: 'Country'});
         changeCountry(country);
       }}>
       <ThemedText style={styles.country}>{country.Country}</ThemedText>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

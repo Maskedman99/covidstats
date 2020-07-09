@@ -1,5 +1,5 @@
 import React, {useState, memo} from 'react';
-import {TouchableHighlight} from 'react-native';
+import {Pressable} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import dayjs from 'dayjs';
 
@@ -15,9 +15,9 @@ const DatePicker = ({date, setDate, minDate, maxDate}) => {
 
   return (
     <>
-      <TouchableHighlight onPress={() => setShowDateTimePicker(true)}>
+      <Pressable onPress={() => setShowDateTimePicker(true)}>
         <ThemedText>{dayjs(date).format('DD MMM YYYY')}</ThemedText>
-      </TouchableHighlight>
+      </Pressable>
       {showDateTimePicker && (
         <DateTimePicker
           testID="dateTimePicker"

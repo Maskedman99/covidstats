@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, TouchableHighlight} from 'react-native';
+import {View, StyleSheet, Pressable} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
 
@@ -16,21 +16,21 @@ const AppHeader = ({title, onFlag, showMenuIcon, showStatsIcon}) => {
   return (
     <View style={styles.headerContainer}>
       {showMenuIcon && (
-        <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
+        <Pressable onPress={() => navigation.toggleDrawer()}>
           <Svg height="30px" width="30px" viewBox={menu.viewBox} fill={theme.foreground}>
             <Path d={menu.path} />
           </Svg>
-        </TouchableHighlight>
+        </Pressable>
       )}
       <View style={styles.innerContainer}>
         <ThemedText style={[styles.header, onFlag && styles.headerShadow]}>{title}</ThemedText>
       </View>
       {showStatsIcon && (
-        <TouchableHighlight onPress={() => navigation.jumpTo('History')}>
+        <Pressable onPress={() => navigation.jumpTo('History')}>
           <Svg height="30px" width="30px" viewBox={analytics.viewBox} fill={theme.foreground}>
             <Path d={analytics.path} />
           </Svg>
-        </TouchableHighlight>
+        </Pressable>
       )}
     </View>
   );

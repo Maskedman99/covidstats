@@ -1,12 +1,11 @@
 import React, {memo, useState, useEffect, useContext} from 'react';
-import {View, StyleSheet, Keyboard} from 'react-native';
+import {View, StyleSheet, Keyboard, Pressable} from 'react-native';
 
 import {CountryContext} from '../Context/countries';
 
 import ColorPalette from './ColorPalette';
 import {ThemedText, Divider} from './Common';
 import SearchCountry from '../Components/SearchCountry';
-import {TouchableHighlight} from 'react-native-gesture-handler';
 
 const DrawerContent = ({navigation}) => {
   const {changeCountry} = useContext(CountryContext);
@@ -30,19 +29,17 @@ const DrawerContent = ({navigation}) => {
     <View style={styles.container}>
       {!isKeyboardOpen && (
         <View>
-          <TouchableHighlight
+          <Pressable
             onPress={() => {
               navigation.navigate('Home', {screen: 'Global'});
               changeCountry(null);
             }}
             style={styles.innerContainer}>
             <ThemedText>Home</ThemedText>
-          </TouchableHighlight>
-          <TouchableHighlight
-            onPress={() => navigation.navigate('About')}
-            style={styles.innerContainer}>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('About')} style={styles.innerContainer}>
             <ThemedText>About</ThemedText>
-          </TouchableHighlight>
+          </Pressable>
           <Divider />
         </View>
       )}
@@ -58,7 +55,6 @@ const DrawerContent = ({navigation}) => {
           <Divider />
         </>
       )}
-      {!isKeyboardOpen && <ThemedText style={styles.version}>App Version</ThemedText>}
     </View>
   );
 };
@@ -72,10 +68,6 @@ const styles = StyleSheet.create({
   innerContainer: {
     paddingHorizontal: 20,
     paddingVertical: 20
-  },
-  version: {
-    textAlign: 'center',
-    padding: 4
   }
 });
 
