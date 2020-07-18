@@ -51,7 +51,7 @@ const TotalDetails = ({data}) => {
         chartConfig={chartConfig}
         accessor="value"
         backgroundColor="transparent"
-        paddingLeft="15"
+        paddingLeft="10"
       />
       <View style={styles.row}>
         <TitleDataCard title={'Confirmed'} data={formatNumber(data.cases)} />
