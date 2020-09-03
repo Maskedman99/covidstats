@@ -6214,10 +6214,10 @@ react-native-bootsplash@^2.2.5:
     jimp "0.14.0"
     prompts "2.3.2"
 
-react-native-chart-kit@^6.2.3:
-  version "6.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-6.2.3.tgz#3ba7a36f9c40c5c72d645b32ffcda368c6aa85e7"
-  integrity sha512-UgKpsW4wmv/vxxav+u/LnZG3saomNhtAZb7ky8117dZmpHmRwNf+yKzI48LOmEBAVAnxMjdTBbatIKGx7J1LOQ==
+react-native-chart-kit@^6.6.1:
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-6.6.1.tgz#cd49bfdad88aaf6e33115f62a8cdf9df53d34563"
+  integrity sha512-aYPqKW37CxOVnP6jWq+I7mQ4AWJ6kDvD2InMI143ShQCmOmWGMbykIgFZ3xs8KFCgQx8YUaPgnvayH9zuOP07Q==
   dependencies:
     lodash "^4.17.13"
     paths-js "^0.4.10"
