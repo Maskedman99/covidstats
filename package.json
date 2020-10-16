@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
-    "@react-native-community/datetimepicker": "^2.6.0",
+    "@react-native-community/datetimepicker": "^3.0.3",
     "@react-navigation/drawer": "^5.8.4",
     "@react-navigation/material-top-tabs": "^5.2.13",
     "@react-navigation/native": "^5.7.2",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "dayjs": "^1.8.29",
     "react": "16.13.1",
     "react-native": "0.63.2",
@@ -32,9 +32,9 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/runtime": "^7.10.2",
-    "@react-native-community/eslint-config": "^1.1.0",
+    "@react-native-community/eslint-config": "^2.0.0",
     "babel-jest": "^26.0.1",
-    "eslint": "^7.9.0",
+    "eslint": "^7.11.0",
     "jest": "^26.0.1",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.11.0"
