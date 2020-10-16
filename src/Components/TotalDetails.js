@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, useWindowDimensions} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 
 import {ThemeContext} from '../Context/themes';
@@ -46,7 +46,7 @@ const TotalDetails = ({data}) => {
     <>
       <PieChart
         data={pieData}
-        width={Dimensions.get('window').width}
+        width={useWindowDimensions().width}
         height={220}
         chartConfig={chartConfig}
         accessor="value"

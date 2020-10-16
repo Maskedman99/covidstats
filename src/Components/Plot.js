@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {View, Dimensions, StyleSheet} from 'react-native';
+import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 import dayjs from 'dayjs';
 const customParseFormat = require('dayjs/plugin/customParseFormat');
@@ -37,7 +37,7 @@ const Plot = ({data, title, chartColor, from, to}) => {
   };
 
   const hideXIndices = labelIndicesToHide(to - from);
-  const plotWidth = Dimensions.get('window').width;
+  const plotWidth = useWindowDimensions().width;
 
   const chartConfig = {
     backgroundGradientFrom: 'white',
