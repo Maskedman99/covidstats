@@ -6289,10 +6289,10 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-bootsplash@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/react-native-bootsplash/-/react-native-bootsplash-2.2.5.tgz#b60763a4b71f37ed0f40f520a6782194d8663277"
-  integrity sha512-WCiHxszJ7FSFPzMgnAJNRrAE/8rDh7jhmoU+bzmk2z4VfqTOpmXkdgjb6sNaGsVHmp6b4Rh0bwlfYopOGw6J4A==
+react-native-bootsplash@^2.2.8:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/react-native-bootsplash/-/react-native-bootsplash-2.2.8.tgz#4705f39889f1ed317224d5147564310976c6b846"
+  integrity sha512-ON9ghhDp6MNL1ybqVO0MHvyp9yfv6Ny3RnvMa7aBCBnlc+spDIZUvDvNsPruf8LZP/SY2WcxENHnu77GtjeFGw==
   dependencies:
     chalk "4.1.0"
     jimp "0.14.0"
